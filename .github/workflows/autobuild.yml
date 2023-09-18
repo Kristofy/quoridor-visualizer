@@ -1,6 +1,12 @@
 name: Publish the library project as a package
 run-name: ${{ github.actor }} Has pushed another version, building and publishing 🚀
 
+permissions:
+  contents: write
+  pull-requests: write 
+  issues: read
+  packages: none
+  
 on:
   push:
     branches: [master]
