@@ -1,11 +1,13 @@
 {
+  "version": "1.0.0",
   "name": "@kristofy/quoridor-visualizer",
+  "description": "A visualizer for the Quoridor game that consumes the output of the related game server",
   "repository": {
     "type": "git",
     "url": "https://github.com/kristofy/quoridor-visualizer.git"
   },
   "publishConfig": {
-    "@Kristofy:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/kristofy"
   },
   "scripts": {
     "ng": "ng",
