@@ -1,12 +1,6 @@
 name: Publish the library project as a package
 run-name: ${{ github.actor }} Has pushed another version, building and publishing 🚀
 
-permissions:
-  contents: write
-  pull-requests: write 
-  issues: read
-  packages: none
-  
 on:
   push:
     branches: [master]
@@ -26,6 +20,7 @@ jobs:
       with:
         node-version: 16
         registry-url: 'https://npm.pkg.github.com'
+        scope: '@octocat'
     - run: npm install
     - run: npm run publish-lib
       env:
