@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Candara', Times, serif;
+  }
+  
+  #container {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  #container > div {
+    flex-basis: 50%;
+  }
+  
+  
+  @media only screen and (max-width: 600px) {
+    #container > div {
+      flex-basis: 100%;
+    }
+  }
+  
+  .canvas {
+    padding: 10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #canvas {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .panel {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .panel * {
+    padding: 10px;
+  }
+  
+  .btn {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.1) 0 2px 5px 0,
+      rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all 0.2s, box-shadow 0.08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+  }
+  
+  .btn:hover {
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, 0.2) 0 6px 15px 0,
+      rgba(0, 0, 0, 0.1) 0 2px 2px 0, rgba(50, 151, 211, 0.3) 0 0 0 4px;
+  }
+  
+  .btn:disabled {
+    background-color: #6378ef;
+    cursor: not-allowed;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+  
+  .button-container > div {
+    width: 100%;
+  }
+  
+  .d-flex {
+    display: flex;
+  }
+  
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .flex-out {
+    justify-content: space-around;
+  }
+  
+  .flex-around {
+    justify-content: space-between;
+  }
+  
+  #fps-range {
+    width: 100%;
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .clickable {
+    cursor: pointer;
+  }
+  
+  .clickable:hover {
+    /*Ligthen the darken of the background of the btton*/
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
+  
+  .messages-header {
+    font-size: medium;
+    text-transform: uppercase;
+  }
+  
+  .messages {
+    width: 100%;
+  }
+  
+  .bordered {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .flex-middle {
+    align-self: center;
+  }
+  
+  .messages h1 {
+    font-size: small;
+    text-transform: uppercase;
+  }
+  
+  
+  .messages div {
+    padding: 0;
+  }
+  
+  .messages > div {
+    margin-bottom: 1rem;
+    padding: 10px;
+  }
+  
+  .message {
+    width: 100%;
+    height: auto;
+    margin: 20px;
+    display: flex;
+  }
+  
+  
+  .sent-message {
+    background-color: rgba(100, 255, 100, 255);
+    border-radius: 10px;
+  }
+  
+  .received-message {
+    background-color: rgba(40, 200, 40, 255);
+    border-radius: 10px;
+  }
+  
+  .error-message {
+    background-color: rgba(255, 100, 100, 255);
+    border-radius: 10px;
+  }
+  
+  .log-message {
+    background-color: rgba(100, 100, 255, 255);
+    border-radius: 10px;
+  }
+  
+  .message-content {
+    width: 100%;
+    height: auto;
+  }
+  
+  .message-text {
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+    white-space: pre-line;
+  }
+  
+  .message-time {
+    width: 100%;
+    height: auto;
+    font-size: small;
+    color: rgba(0, 0, 0, 0.5);
+    font-style: italic;
+    display: inline-block;
+    padding-right: 10px;
+  }
+  
+  .no-padding * {
+    padding: initial;
+  }
+  
+  .bot-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    .bot-name {
+      border: 1px solid;
+    }
+  }
+  
+  .bot-row.offline-bot {
+    text-decoration: line-through;
+    color: grey;
+  }
+  

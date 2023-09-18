@@ -1,0 +1,143 @@
+<div id="container">
+    <div class="canvas">
+        <div id="canvas"></div>
+    </div>
+    <div class="panel" *ngIf="game">
+        <div class="button-container">
+            <div class="d-flex flex-row flex-around">
+                <div class="d-flex flex-column bordered">
+                    <h1 class="flex-middle">Player</h1>
+                    <div class="d-flex flex-row center">
+
+                        <select [(ngModel)]="botIndex" (change)="onSelectedPlayerChanged($event.target)">
+                            <option *ngFor="let player of game.players" [value]="player.id"
+                                [selected]="player.id === botIndex">
+
+                                {{ player.name }}
+
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="d-flex flex-column bordered">
+                    <h1 class="flex-middle">Tick</h1>
+                    <div class="d-flex flex-row center">
+                        <fa-icon class="clickable" [icon]="start_arrow" (click)="restartButtonClickedEvent()"></fa-icon>
+                        <fa-icon class="clickable" [icon]="left_arrow" (click)="prevButtonClickedEvent()"></fa-icon>
+                        <input defaultValue="0" type="number" min="0" [max]="last" [ngModel]="time"
+                            (ngModelChange)="onTickChanged($event)" (blur)="onTickInputLostFocus()" />
+                        <fa-icon class="clickable" [icon]="right_arrow" (click)="nextButtonClickedEvent()"></fa-icon>
+                        <fa-icon class="clickable" [icon]="end_arrow" (click)="endButtonClickedEvent()"></fa-icon>
+                    </div>
+                </div>
+                <div class="d-flex flex-column bordered">
+                    <h1 class="flex-middle">Animation</h1>
+                    <div class="d-flex flex-row">
+                        <fa-icon *ngIf="!isAnimating" [icon]="star_icon" class="clickable"
+                            (click)="animateStartButtonClickedEvent()"></fa-icon>
+                        <fa-icon *ngIf="isAnimating" [icon]="pause_icon" class="clickable"
+                            (click)="animateEndButtonClickedEvent()"></fa-icon>
+                        <label id="fps-range-label" for="fps-range">speed</label>
+                        <input id="fps-range" type="range" min="0.25" max="10" step="0.25" [value]="fps"
+                            (input)="fpsInputEvent($event)" />
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="bordered no-padding">
+                <mat-list>
+                    <mat-list-item *ngFor="let player of game.players">
+                        <div class="bot-row"
+                            [ngClass]="{'offline-bot': this.ticks[this.time].bots[player.id].offline}">
+                            <img class="planet-image" src="{{player.planetImagePath}}" width="30">
+                            <b class="bot-name" [ngStyle]="{'background-color': player.color}">{{player.name}}</b> total
+                            army: {{player.armySize}}
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+         -->
+            <div class="bordered">
+                <h1 class="messages-header">Messages:</h1>
+                <div class="messages">
+                    <div *ngIf="messages?.received !== null" class="received-message">
+                        <h1>
+                            bot received
+                        </h1>
+                        <div class="">
+                            <div *ngFor="let received of messages?.received">
+                                <div class="message">
+                                    <div class="message-content">
+                                        <div class="message-text">
+                                            {{received.message}}
+                                        </div>
+                                        <div class="message-time">
+                                            {{received.timestamp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="messages?.sent !== null" class="sent-message">
+                        <h1>
+                            bot sent
+                        </h1>
+                        <div class="">
+                            <div *ngFor="let sent of messages?.sent">
+                                <div class="message">
+                                    <div class="message-content">
+                                        <div class="message-text">
+                                            {{sent.message}}
+                                        </div>
+                                        <div class="message-time">
+                                            {{sent.timestamp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="messages?.error !== null && messages?.error?.length !== 0 " class="error-message">
+                        <h1>
+                            bot error
+                        </h1>
+                        <div class="">
+                            <div *ngFor="let error of messages?.error">
+                                <div class="message">
+                                    <div class="message-content">
+                                        <div class="message-text">
+                                            {{error.message}}
+                                        </div>
+                                        <div class="message-time">
+                                            {{error.timestamp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="messages?.botLog !== null && messages?.botLog?.length !== 0 " class="log-message">
+                        <h1>
+                            bot log
+                        </h1>
+                        <div class="">
+                            <div *ngFor="let botLog of messages?.botLog">
+                                <div class="message">
+                                    <div class="message-content">
+                                        <div class="message-text">
+                                            {{botLog.message}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { jsonstring } from './test';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'quoridor';
+  public jsonstring = jsonstring;
+  public bot_id = JSON.parse(jsonstring).init.players[0].id;
 }

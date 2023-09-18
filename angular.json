@@ -3,29 +3,29 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "quoridor": {
+    "quoridor-visualizer-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "projects/quoridor-visualizer-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/quoridor",
-            "index": "src/index.html",
-            "main": "src/main.ts",
+            "index": "projects/quoridor-visualizer-app/src/index.html",
+            "main": "projects/quoridor-visualizer-app/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "projects/quoridor-visualizer-app/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/quoridor-visualizer-app/src/favicon.ico",
+              "projects/quoridor-visualizer-app/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "projects/quoridor-visualizer-app/src/styles.css"
             ],
             "scripts": []
           },
@@ -34,8 +34,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "quoridor:build:production"
+              "browserTarget": "quoridor-visualizer-app:build:production"
             },
             "development": {
-              "browserTarget": "quoridor:build:development"
+              "browserTarget": "quoridor-visualizer-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "quoridor:build"
+            "browserTarget": "quoridor-visualizer-app:build"
           }
         },
         "test": {
@@ -81,15 +81,48 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "projects/quoridor-visualizer-app/tsconfig.spec.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/quoridor-visualizer-app/src/favicon.ico",
+              "projects/quoridor-visualizer-app/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "projects/quoridor-visualizer-app/src/styles.css"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "quoridor-visualizer": {
+      "projectType": "library",
+      "root": "projects/quoridor-visualizer",
+      "sourceRoot": "projects/quoridor-visualizer/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/quoridor-visualizer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/quoridor-visualizer/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/quoridor-visualizer/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/quoridor-visualizer/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
