@@ -5,7 +5,7 @@
     "url": "https://github.com/kristofy/quoridor-visualizer.git"
   },
   "publishConfig": {
-    "@kristofy:registry": "https://npm.pkg.github.com"
+    "@Kristofy:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "ng": "ng",
@@ -13,7 +13,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "publish-lib": "ng build quoridor-visualizer && npm publish ./dist/quoridor-visualizer --access public"
+    "publish-lib": "ng build quoridor-visualizer && npm publish ./dist/quoridor-visualizer"
 
   },
   "dependencies": {
