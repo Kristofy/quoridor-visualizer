@@ -4,6 +4,9 @@
     "type": "git",
     "url": "https://github.com/kristofy/quoridor-visualizer.git"
   },
+  "publishConfig": {
+    "@kristofy:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
