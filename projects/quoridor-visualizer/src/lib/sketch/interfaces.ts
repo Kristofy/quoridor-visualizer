@@ -21,14 +21,14 @@ export interface JsonTick {
 export interface JsonPawnPos {
   x: number;
   y: number;
-};
+}
 
 export interface JsonWall {
   x: number;
   y: number;
-  isVertical: boolean;
+  isVertical: number;
   who: number;
-};
+}
 
 export interface JsonBot {
   id: number;
@@ -39,12 +39,18 @@ export interface JsonBot {
   offline?: true;
 }
 
-export interface JsonAction {
-  type: string;
-  x: number;
-  y: number;
-  isVertical?: string;
-};
+export type JsonAction =
+  | {
+      type: 'move';
+      x: number;
+      y: number;
+    }
+  | {
+      type: 'place';
+      x: number;
+      y: number;
+      isVertical: number;
+    };
 
 export interface JsonMessage {
   message: string;

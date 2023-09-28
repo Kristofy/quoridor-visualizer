@@ -11,6 +11,7 @@ export class GameModule {
   numOfWalls: number;
   current!: JsonTick;
   ctx: p5;
+
   constructor(
     ctx: p5,
     players: JsonPlayer[],
@@ -56,18 +57,7 @@ export class GameModule {
     // Draw placed walls
 
     for (let wall of this.current.walls) {
-      const { x, y, isVertical, who } = wall;
-
-      const start_x = size * (x + (isVertical ? 1 : 0));
-      const start_y = size * (y + (isVertical ? 0 : 1));
-
-      const end_x = size * (x + 1 + (isVertical ? 0 : 1));
-      const end_y = size * (y + 1 + (isVertical ? 1 : 0));
-
-      this.ctx.stroke(COLORS[who]);
-
-      this.ctx.strokeWeight(14);
-      this.ctx.line(start_x, start_y, end_x, end_y);
+      this.drawWall(size, wall, false);
     }
 
     // Draw pawns
@@ -81,22 +71,7 @@ export class GameModule {
     }
 
     if (this.current.action.type === 'place') {
-      const { type, x, y, isVertical } = this.current.action;
-      const who = this.current.currentPlayer;
-
-      const start_x = size * (x + (isVertical ? 1 : 0));
-      const start_y = size * (y + (isVertical ? 0 : 1));
-
-      const end_x = size * (x + 1 + (isVertical ? 0 : 1));
-      const end_y = size * (y + 1 + (isVertical ? 1 : 0));
-
-      this.ctx.stroke(255);
-      this.ctx.strokeWeight(16);
-      this.ctx.line(start_x, start_y, end_x, end_y);
-
-      this.ctx.stroke(COLORS[who]);
-      this.ctx.strokeWeight(14);
-      this.ctx.line(start_x, start_y, end_x, end_y);
+      this.drawWall(size, { ...this.current.action, who: this.current.currentPlayer }, true);
     } else if (this.current.action.type === 'move') {
       const { type, x, y } = this.current.action;
       this.ctx.stroke(255);
@@ -108,5 +83,32 @@ export class GameModule {
 
   update(tick: JsonTick) {
     this.current = tick;
+  }
+
+  protected drawWall(
+    size: number,
+    wall: {
+      x: number;
+      y: number;
+      isVertical: number;
+      who: number;
+    },
+    highlight: boolean,
+  ) {
+    const start_x = size * (wall.x + (wall.isVertical ? 1 : 0));
+    const start_y = size * (wall.y + (wall.isVertical ? 0 : 1));
+
+    const end_x = size * (wall.x + (wall.isVertical ? 1 : 2));
+    const end_y = size * (wall.y + (wall.isVertical ? 2 : 1));
+
+    if (highlight) {
+      this.ctx.stroke(255);
+      this.ctx.strokeWeight(16);
+      this.ctx.line(start_x, start_y, end_x, end_y);
+    }
+
+    this.ctx.stroke(COLORS[wall.who]);
+    this.ctx.strokeWeight(14);
+    this.ctx.line(start_x, start_y, end_x, end_y);
   }
 }
