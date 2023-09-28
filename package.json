@@ -7,7 +7,7 @@
     "url": "https://github.com/kristofy/quoridor-visualizer.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/kristofy"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "ng": "ng",
