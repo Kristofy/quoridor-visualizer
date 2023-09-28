@@ -33,6 +33,8 @@ export class GameModule {
     // Draw background
     this.ctx.strokeWeight(4);
     this.ctx.stroke(ACCENT_COLOR);
+    this.ctx.fill(ACCENT_COLOR);
+    
     for(let row = 0; row <= this.board.rows; row++) {
       this.ctx.line(0, row * size, this.ctx.width, row * size);
     }
