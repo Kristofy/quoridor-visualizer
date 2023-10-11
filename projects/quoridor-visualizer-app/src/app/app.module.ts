@@ -5,14 +5,9 @@ import { AppComponent } from './app.component';
 import { QuoridorVisualizerModule } from 'projects/quoridor-visualizer/src/public-api';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    QuoridorVisualizerModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, QuoridorVisualizerModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

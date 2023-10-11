@@ -1,5 +1,12 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
+  faAngleLeft,
+  faAngleRight,
+  faPause,
+  faPlay,
+} from '@fortawesome/free-solid-svg-icons';
 import * as p5 from 'p5';
 import { GameModule } from './sketch/game.module';
 import { BotMessageBundle } from './sketch/message';
@@ -8,7 +15,7 @@ import { JsonBoard, JsonInit, JsonLog, JsonPlayer, JsonTick } from './sketch/int
 @Component({
   selector: 'lib-quoridor-visualizer',
   templateUrl: './quoridor-visualizer.component.html',
-  styleUrls: [ './quoridor-visualizer.component.scss' ]
+  styleUrls: ['./quoridor-visualizer.component.scss'],
 })
 export class QuoridorVisualizerComponent implements OnChanges {
   @Input() public jsonstring!: string;
@@ -61,7 +68,6 @@ export class QuoridorVisualizerComponent implements OnChanges {
     // let tmp = this.time;
     // this.onTickChanged(this.last_time);
     // this.onTickChanged(tmp);
-
   }
 
   nextButtonClickedEvent(): void {
@@ -108,25 +114,30 @@ export class QuoridorVisualizerComponent implements OnChanges {
     let scale: number;
     let backgroundImage: p5.Image;
     let last_tick = -1;
-    let board_size = 600;
+    const board_size = 600;
 
     ctx.setup = () => {
-      const { init, ticks }: { init: JsonInit; ticks: JsonTick[] } = (this.jsonLog = JSON.parse(this.jsonstring));
-      const { players, board, numOfWalls, }: { players: JsonPlayer[]; board: JsonBoard; numOfWalls: number } = init;
-      const { rows, cols }: { rows: number; cols: number } = board;
-     
-      const clientHeight = document.querySelector<HTMLDivElement>("#container")?.clientHeight ?? 600;
-      const clientWidth = document.querySelector<HTMLDivElement>("#canvas")?.clientWidth ?? 800;
+      const { init, ticks }: { init: JsonInit; ticks: JsonTick[] } = (this.jsonLog = JSON.parse(
+        this.jsonstring,
+      ));
+      const {
+        players,
+        board,
+        numOfWalls,
+      }: { players: JsonPlayer[]; board: JsonBoard; numOfWalls: number } = init;
+
+      const clientHeight =
+        document.querySelector<HTMLDivElement>('#container')?.clientHeight ?? 600;
+      const clientWidth = document.querySelector<HTMLDivElement>('#canvas')?.clientWidth ?? 800;
       const wratio = clientWidth / board_size;
       const hratio = clientHeight / board_size;
       const min_ratio = Math.min(wratio, hratio);
       const new_board_size = min_ratio * board_size;
 
-     
       const C = ctx.createCanvas(new_board_size, new_board_size);
       ctx.scale(min_ratio);
-      C.parent("canvas");
-      
+      C.parent('canvas');
+
       this.ticks = ticks;
       this.last = this.ticks.length - 1;
 
@@ -140,7 +151,9 @@ export class QuoridorVisualizerComponent implements OnChanges {
     };
 
     ctx.draw = () => {
-      if (!this.game) { throw new Error("this.game not initialized"); }
+      if (!this.game) {
+        throw new Error('this.game not initialized');
+      }
       if (this.isAnimating) {
         const currentTime = window.performance.now();
         const deltaTime = window.performance.now() - this.last_time;
@@ -152,16 +165,17 @@ export class QuoridorVisualizerComponent implements OnChanges {
         this.accFrameTime = this.accFrameTime - d / this.fps;
         this.time = Math.min(this.time + d, this.last);
       }
-      
+
       if (this.time <= this.last && this.time >= 0) {
         ctx.scale(scale);
-        ctx.background(backgroundImage ?? "#000000");
+        ctx.background(backgroundImage ?? '#000000');
         this.game.update(this.ticks[this.time]);
-        this.ticks[this.time]?.bots[this.botIndex];
-        const last_index = this.time < 1 ? 0 : this.time - 1;
+        this.ticks[this.time]?.bots[this.selectedPlayer.index];
         this.game.render();
         if (last_tick != this.time) {
-          this.messages = new BotMessageBundle(this.ticks[this.time].bots[this.botIndex]);
+          this.messages = new BotMessageBundle(
+            this.ticks[this.time].bots[this.selectedPlayer.index],
+          );
         }
         last_tick = this.time;
       }
@@ -171,14 +185,13 @@ export class QuoridorVisualizerComponent implements OnChanges {
       }
     };
 
-    ctx.windowResized = function() {
-      const clientHeight = document.querySelector<HTMLDivElement>("#container")?.clientHeight ?? 600;
-      const clientWidth = document.querySelector<HTMLDivElement>("#canvas")?.clientWidth ?? 800;
+    ctx.windowResized = function () {
+      const clientHeight =
+        document.querySelector<HTMLDivElement>('#container')?.clientHeight ?? 600;
+      const clientWidth = document.querySelector<HTMLDivElement>('#canvas')?.clientWidth ?? 800;
       const wratio = clientWidth / board_size;
       const hratio = clientHeight / board_size;
       const min_ratio = Math.min(wratio, hratio);
-      const new_board_size = min_ratio * board_size;
-      const C = ctx.resizeCanvas(new_board_size, new_board_size);
       ctx.scale(min_ratio);
     };
   }
@@ -188,5 +201,4 @@ export class QuoridorVisualizerComponent implements OnChanges {
       this.instance = new p5(this.sketch.bind(this));
     }
   }
-
 }

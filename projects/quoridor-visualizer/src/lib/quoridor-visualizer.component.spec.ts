@@ -8,7 +8,7 @@ describe('QuoridorVisualizerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QuoridorVisualizerComponent]
+      declarations: [QuoridorVisualizerComponent],
     });
     fixture = TestBed.createComponent(QuoridorVisualizerComponent);
     component = fixture.componentInstance;

@@ -1,5 +1,5 @@
 import * as p5 from 'p5';
-import { JsonBoard, JsonPlayer, JsonTick, JsonWall } from './interfaces';
+import { JsonBoard, JsonPlayer, JsonTick } from './interfaces';
 
 const ACCENT_COLOR = 144;
 const BG_COLOR = 190;
@@ -56,7 +56,7 @@ export class GameModule {
     }
     // Draw placed walls
 
-    for (let wall of this.current.walls) {
+    for (const wall of this.current.walls) {
       this.drawWall(size, wall, false);
     }
 
@@ -73,7 +73,7 @@ export class GameModule {
     if (this.current.action.type === 'place') {
       this.drawWall(size, { ...this.current.action, who: this.current.currentPlayer }, true);
     } else if (this.current.action.type === 'move') {
-      const { type, x, y } = this.current.action;
+      const { x, y } = this.current.action;
       this.ctx.stroke(255);
       this.ctx.noFill();
       this.ctx.strokeWeight(2);
