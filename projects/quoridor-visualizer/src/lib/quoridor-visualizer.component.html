@@ -8,13 +8,10 @@
                 <div class="d-flex flex-column bordered">
                     <h1 class="flex-middle">Player</h1>
                     <div class="d-flex flex-row center">
-
-                        <select [(ngModel)]="botIndex" (change)="onSelectedPlayerChanged($event.target)">
-                            <option *ngFor="let player of game.players" [value]="player.id"
-                                [selected]="player.id === botIndex">
-
+                        <select [(ngModel)]="selectedPlayer" [compareWith]="compareSelectedPlayers" (change)="onSelectedPlayerChanged()">
+                            <option *ngFor="let player of game.players; index as index" [ngValue]="{ id: player.id, index }"
+                                [selected]="player.id === selectedPlayer.id">
                                 {{ player.name }}
-
                             </option>
                         </select>
 

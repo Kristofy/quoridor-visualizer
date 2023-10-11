@@ -63,6 +63,6 @@ export interface JsonBoard {
 }
 
 export interface JsonPlayer {
-  id: number;
+  id: string;
   name: string;
 }

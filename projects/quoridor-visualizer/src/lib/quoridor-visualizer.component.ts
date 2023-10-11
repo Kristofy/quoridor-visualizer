@@ -12,9 +12,9 @@ import { JsonBoard, JsonInit, JsonLog, JsonPlayer, JsonTick } from './sketch/int
 })
 export class QuoridorVisualizerComponent implements OnChanges {
   @Input() public jsonstring!: string;
-  @Input() public bot_id!: number;
+  @Input() public bot_id!: string;
 
-  public botIndex!: number;
+  public selectedPlayer!: { id: string; index: number };
 
   public left_arrow = faAngleLeft;
   public right_arrow = faAngleRight;
@@ -39,11 +39,12 @@ export class QuoridorVisualizerComponent implements OnChanges {
 
   private jsonLog?: JsonLog;
 
+  compareSelectedPlayers(player1?: { id: string }, player2?: { id: string }) {
+    return !!(player1 && player2 && player1.id == player2.id);
+  }
 
-  onSelectedPlayerChanged(event: any) {
-    const value = event.value;
-    this.bot_id = value;
-    this.messages = new BotMessageBundle(this.ticks[this.time].bots[this.botIndex]);
+  onSelectedPlayerChanged() {
+    this.messages = new BotMessageBundle(this.ticks[this.time].bots[this.selectedPlayer.index]);
   }
 
   onTickChanged(new_tick: number | null): void {
@@ -132,9 +133,9 @@ export class QuoridorVisualizerComponent implements OnChanges {
       // this.players = players.map((player) => ({ ...player, planetImagePath: Player.getPlanetImagePath(player.index) }));
 
       this.game = new GameModule(ctx, players, board, numOfWalls, ticks[0]);
-      const selectedPlayer = players.find((player) => player.id === this.bot_id);
-      if (!selectedPlayer) throw new Error("Specified bot id not present in match log");
-      this.botIndex = selectedPlayer.id;
+      const selectedPlayerIndex = players.findIndex((player) => player.id === this.bot_id);
+      if (selectedPlayerIndex < 0) throw new Error('Specified bot id not present in match log');
+      this.selectedPlayer = { id: this.bot_id, index: selectedPlayerIndex };
       ctx.textAlign(ctx.CENTER, ctx.CENTER);
     };
 
