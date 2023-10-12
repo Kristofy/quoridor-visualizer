@@ -1,4 +1,4 @@
-import * as p5 from 'p5';
+import p5 from 'p5';
 import { JsonBoard, JsonPlayer, JsonTick } from './interfaces';
 
 const ACCENT_COLOR = 144;

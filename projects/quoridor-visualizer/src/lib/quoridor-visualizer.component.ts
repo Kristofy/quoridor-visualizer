@@ -7,7 +7,7 @@ import {
   faPause,
   faPlay,
 } from '@fortawesome/free-solid-svg-icons';
-import * as p5 from 'p5';
+import p5 from 'p5';
 import { GameModule } from './sketch/game.module';
 import { BotMessageBundle } from './sketch/message';
 import { JsonBoard, JsonInit, JsonLog, JsonPlayer, JsonTick } from './sketch/interfaces';
