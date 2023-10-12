@@ -1,11 +1,11 @@
 {
   "name": "@kristofy/quoridor-visualizer",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0",
-    "@fortawesome/angular-fontawesome": "^0.12.1",
+    "@fortawesome/angular-fontawesome": "^0.13.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "p5": "1"
