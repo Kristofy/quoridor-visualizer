@@ -10,7 +10,7 @@ import {
 import p5 from 'p5';
 import { GameModule } from './sketch/game.module';
 import { BotMessageBundle } from './sketch/message';
-import { JsonBoard, JsonInit, JsonLog, JsonPlayer, JsonTick } from './sketch/interfaces';
+import { JsonInit, JsonLog, JsonTick } from './sketch/interfaces';
 
 @Component({
   selector: 'lib-quoridor-visualizer',
@@ -120,11 +120,7 @@ export class QuoridorVisualizerComponent implements OnChanges {
       const { init, ticks }: { init: JsonInit; ticks: JsonTick[] } = (this.jsonLog = JSON.parse(
         this.jsonstring,
       ));
-      const {
-        players,
-        board,
-        numOfWalls,
-      }: { players: JsonPlayer[]; board: JsonBoard; numOfWalls: number } = init;
+      const { players, boardSize, numOfWalls } = init;
 
       const clientHeight =
         document.querySelector<HTMLDivElement>('#container')?.clientHeight ?? 600;
@@ -143,7 +139,7 @@ export class QuoridorVisualizerComponent implements OnChanges {
 
       // this.players = players.map((player) => ({ ...player, planetImagePath: Player.getPlanetImagePath(player.index) }));
 
-      this.game = new GameModule(ctx, players, board, numOfWalls, ticks[0]);
+      this.game = new GameModule(ctx, players, boardSize, numOfWalls, ticks[0]);
       const selectedPlayerIndex = players.findIndex((player) => player.id === this.bot_id);
       if (selectedPlayerIndex < 0) throw new Error('Specified bot id not present in match log');
       this.selectedPlayer = { id: this.bot_id, index: selectedPlayerIndex };

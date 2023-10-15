@@ -5,7 +5,7 @@ export interface JsonLog {
 
 export interface JsonInit {
   players: JsonPlayer[];
-  board: JsonBoard;
+  boardSize: number;
   numOfWalls: number;
 }
 
@@ -55,11 +55,6 @@ export type JsonAction =
 export interface JsonMessage {
   message: string;
   timestamp: number | null;
-}
-
-export interface JsonBoard {
-  rows: number;
-  cols: number;
 }
 
 export interface JsonPlayer {

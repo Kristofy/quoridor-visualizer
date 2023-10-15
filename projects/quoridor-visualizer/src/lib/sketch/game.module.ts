@@ -1,36 +1,30 @@
 import p5 from 'p5';
-import { JsonBoard, JsonPlayer, JsonTick } from './interfaces';
+import { JsonPlayer, JsonTick } from './interfaces';
 
 const ACCENT_COLOR = 144;
 const BG_COLOR = 190;
 const COLORS = ['#a02214', '#14c214'];
 
 export class GameModule {
-  players: JsonPlayer[];
-  board: JsonBoard;
-  numOfWalls: number;
   current!: JsonTick;
   ctx: p5;
 
   constructor(
     ctx: p5,
-    players: JsonPlayer[],
-    board: JsonBoard,
-    numOfWalls: number,
+    readonly players: JsonPlayer[],
+    protected boardSize: number,
+    protected numOfWalls: number,
     tick: JsonTick,
   ) {
     this.ctx = ctx;
-    this.players = players;
-    this.board = board;
-    this.numOfWalls = numOfWalls;
     this.update(tick);
   }
 
   render(): void {
     this.ctx.background(BG_COLOR);
 
-    const size_x = this.ctx.width / this.board.cols;
-    const size_y = this.ctx.height / this.board.rows;
+    const size_x = this.ctx.width / this.boardSize;
+    const size_y = this.ctx.height / this.boardSize;
     // Should be equal
     const size = Math.min(size_x, size_y);
 
@@ -39,16 +33,16 @@ export class GameModule {
     this.ctx.stroke(ACCENT_COLOR);
     this.ctx.fill(ACCENT_COLOR);
 
-    for (let row = 0; row <= this.board.rows; row++) {
+    for (let row = 0; row <= this.boardSize; row++) {
       this.ctx.line(0, row * size, this.ctx.width, row * size);
     }
 
-    for (let col = 0; col <= this.board.cols; col++) {
+    for (let col = 0; col <= this.boardSize; col++) {
       this.ctx.line(col * size, 0, col * size, this.ctx.height);
     }
 
-    for (let row = 0; row <= this.board.rows; row++) {
-      for (let col = 0; col <= this.board.cols; col++) {
+    for (let row = 0; row <= this.boardSize; row++) {
+      for (let col = 0; col <= this.boardSize; col++) {
         const x = col * size;
         const y = row * size;
         this.ctx.circle(x, y, 8);
