@@ -19,8 +19,8 @@ export class BotMessageBundle {
   constructor(json_bot_message: JsonBot) {
     this.received = json_bot_message.received.map((x) => new BotMessage(x));
     this.sent = json_bot_message.sent.map((x) => new BotMessage(x));
-    this.error = json_bot_message.commandError
-      ? [new BotMessage({ message: json_bot_message.commandError, timestamp: null })]
+    this.error = json_bot_message.error
+      ? [new BotMessage({ message: json_bot_message.error, timestamp: null })]
       : [];
     this.botLog = json_bot_message.botLog
       ? [new BotMessage({ message: json_bot_message.botLog, timestamp: null })]

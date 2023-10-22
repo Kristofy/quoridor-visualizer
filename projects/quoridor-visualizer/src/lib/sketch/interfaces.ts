@@ -34,7 +34,7 @@ export interface JsonBot {
   id: number;
   received: JsonMessage[];
   sent: JsonMessage[];
-  commandError?: string | null;
+  error?: string | null;
   botLog?: string | null;
   offline?: true;
 }

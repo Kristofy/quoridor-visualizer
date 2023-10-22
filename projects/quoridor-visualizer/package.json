@@ -1,6 +1,6 @@
 {
   "name": "@kristofy/quoridor-visualizer",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "type": "module",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
