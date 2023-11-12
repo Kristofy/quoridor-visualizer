@@ -118,20 +118,33 @@ export class GameModule {
     },
     highlight: boolean,
   ) {
-    const start_x = this.margin + size * (wall.x + (wall.isVertical ? 1 : 0));
-    const start_y = this.margin + size * (wall.y + (wall.isVertical ? 0 : 1));
+    let start_x;
+    let start_y;
+    let end_x;
+    let end_y;
 
-    const end_x = this.margin + size * (wall.x + (wall.isVertical ? 1 : 2));
-    const end_y = this.margin + size * (wall.y + (wall.isVertical ? 2 : 1));
+    const wallWidth = 14;
+
+    if (wall.isVertical) {
+      start_x = this.margin + size * (wall.x + 1);
+      start_y = this.margin + size * wall.y + wallWidth / 2;
+      end_x = this.margin + size * (wall.x + 1);
+      end_y = this.margin + size * (wall.y + 2) - wallWidth / 2;
+    } else {
+      start_x = this.margin + size * wall.x + wallWidth / 2;
+      start_y = this.margin + size * (wall.y + 1);
+      end_x = this.margin + size * (wall.x + 2) - wallWidth / 2;
+      end_y = this.margin + size * (wall.y + 1);
+    }
 
     if (highlight) {
       this.ctx.stroke(255);
-      this.ctx.strokeWeight(16);
+      this.ctx.strokeWeight(wallWidth + 2);
       this.ctx.line(start_x, start_y, end_x, end_y);
     }
 
     this.ctx.stroke(COLORS[wall.who]);
-    this.ctx.strokeWeight(14);
+    this.ctx.strokeWeight(wallWidth);
     this.ctx.line(start_x, start_y, end_x, end_y);
   }
 }
