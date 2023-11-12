@@ -95,7 +95,8 @@
               <b class="bot-name" [ngStyle]="{ 'background-color': COLORS[player.index] }">{{
                 player.name
               }}</b>
-              distance: {{ this.ticks[this.time].bots[player.index].distance }}
+              distance: {{ this.ticks[this.time].bots[player.index].distance }} walls:
+              {{ this.ticks[this.time].ownedWalls[player.index] }}
             </div>
           </mat-list-item>
         </mat-list>
