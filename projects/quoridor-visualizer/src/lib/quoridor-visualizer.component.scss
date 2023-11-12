@@ -94,7 +94,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .button-container > div {
@@ -143,6 +143,10 @@
   border-radius: 6px;
 }
 
+.messages-container {
+  overflow-y: scroll;
+}
+
 .messages-header {
   font-size: medium;
   text-transform: uppercase;
@@ -176,7 +180,6 @@
 }
 
 .message {
-  width: 100%;
   height: auto;
   margin: 20px;
   display: flex;
