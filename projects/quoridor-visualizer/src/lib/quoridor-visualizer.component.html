@@ -85,19 +85,21 @@
           </div>
         </div>
       </div>
-      <!-- <div class="bordered no-padding">
-                <mat-list>
-                    <mat-list-item *ngFor="let player of game.players">
-                        <div class="bot-row"
-                            [ngClass]="{'offline-bot': this.ticks[this.time].bots[player.id].offline}">
-                            <img class="planet-image" src="{{player.planetImagePath}}" width="30">
-                            <b class="bot-name" [ngStyle]="{'background-color': player.color}">{{player.name}}</b> total
-                            army: {{player.armySize}}
-                        </div>
-                    </mat-list-item>
-                </mat-list>
+      <div class="bordered no-padding">
+        <mat-list>
+          <mat-list-item *ngFor="let player of game.players">
+            <div
+              class="bot-row"
+              [ngClass]="{ 'offline-bot': this.ticks[this.time].bots[player.index].offline }"
+            >
+              <b class="bot-name" [ngStyle]="{ 'background-color': COLORS[player.index] }">{{
+                player.name
+              }}</b>
+              distance: {{ this.ticks[this.time].bots[player.index].distance }}
             </div>
-         -->
+          </mat-list-item>
+        </mat-list>
+      </div>
       <div class="bordered">
         <h1 class="messages-header">Messages:</h1>
         <div class="messages">

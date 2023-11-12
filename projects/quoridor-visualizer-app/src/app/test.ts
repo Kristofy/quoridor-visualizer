@@ -3,19 +3,18 @@ export const jsonstring = `
   "init": {
     "players": [
       {
-        "id": 0,
-        "name": "0"
+        "id": "e869aa89fb760fd621e6a7f9",
+        "index": 0,
+        "name": "Test Bot (easy)"
       },
       {
-        "id": 1,
-        "name": "1"
+        "id": "e1c2d3a5fc5309de6595067b",
+        "index": 1,
+        "name": "Test Bot (hard)"
       }
     ],
-    "board": {
-      "rows": 9,
-      "cols": 9
-    },
-    "numOfWalls": 19
+    "boardSize": 9,
+    "numOfWalls": 15
   },
   "ticks": [
     {
@@ -40,42 +39,28 @@ export const jsonstring = `
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [
             {
-              "message": "START",
-              "timestamp": 1695877084822
-            },
-            {
-              "message": "2\\n0\\n9 9\\n4 0 10\\n4 8 10",
-              "timestamp": 1695877084883
+              "message": "2\\n0\\n9\\n4 0 10\\n4 8 10",
+              "timestamp": 1699800130928
             }
           ],
-          "sent": [
-            {
-              "message": "OK",
-              "timestamp": 1695877084852
-            }
-          ]
+          "sent": [],
+          "distance": 8
         },
         {
-          "id": 1,
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [
             {
-              "message": "START",
-              "timestamp": 1695877084852
-            },
-            {
-              "message": "2\\n1\\n9 9\\n4 0 10\\n4 8 10",
-              "timestamp": 1695877084883
+              "message": "2\\n1\\n9\\n4 0 10\\n4 8 10",
+              "timestamp": 1699800130929
             }
           ],
-          "sent": [
-            {
-              "message": "OK",
-              "timestamp": 1695877084883
-            }
-          ]
+          "sent": [],
+          "distance": 8
         }
       ]
     },
@@ -84,11 +69,109 @@ export const jsonstring = `
       "pawnPos": [
         {
           "x": 4,
-          "y": 0
+          "y": 1
         },
         {
           "x": 4,
           "y": 8
+        }
+      ],
+      "walls": [],
+      "ownedWalls": [
+        10,
+        10
+      ],
+      "action": {
+        "type": "move",
+        "x": 4,
+        "y": 1
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [
+            {
+              "message": "1\\n4 0 10\\n4 8 10\\n0\\n",
+              "timestamp": 1699800130930
+            }
+          ],
+          "sent": [
+            {
+              "message": "4 1",
+              "timestamp": 1699800130941
+            }
+          ],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [],
+          "sent": [],
+          "distance": 8
+        }
+      ]
+    },
+    {
+      "currentPlayer": 1,
+      "pawnPos": [
+        {
+          "x": 4,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "walls": [],
+      "ownedWalls": [
+        10,
+        10
+      ],
+      "action": {
+        "type": "move",
+        "x": 4,
+        "y": 7
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [],
+          "sent": [],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [
+            {
+              "message": "2\\n4 1 10\\n4 8 10\\n0\\n",
+              "timestamp": 1699800130942
+            }
+          ],
+          "sent": [
+            {
+              "message": "4 7",
+              "timestamp": 1699800130953
+            }
+          ],
+          "distance": 7
+        }
+      ]
+    },
+    {
+      "currentPlayer": 0,
+      "pawnPos": [
+        {
+          "x": 4,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 7
         }
       ],
       "walls": [
@@ -111,24 +194,28 @@ export const jsonstring = `
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [
             {
-              "message": "1\\n4 0 10\\n4 8 10\\n0\\n",
-              "timestamp": 1695877084884
+              "message": "3\\n4 1 10\\n4 7 10\\n0\\n",
+              "timestamp": 1699800130954
             }
           ],
           "sent": [
             {
               "message": "0 0 0",
-              "timestamp": 1695877084914
+              "timestamp": 1699800130964
             }
-          ]
+          ],
+          "distance": 7
         },
         {
-          "id": 1,
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [],
-          "sent": []
+          "sent": [],
+          "distance": 7
         }
       ]
     },
@@ -137,858 +224,10 @@ export const jsonstring = `
       "pawnPos": [
         {
           "x": 4,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 7
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "2\\n4 0 9\\n4 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877084917
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877084947
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "3\\n4 0 9\\n4 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877084948
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877084979
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 6
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "4\\n5 0 9\\n4 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877084979
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085009
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "5\\n5 0 9\\n4 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085010
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085039
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 7
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "6\\n6 0 9\\n4 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085040
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085070
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "7\\n6 0 9\\n4 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085071
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085101
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 6
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "8\\n5 0 9\\n4 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085102
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085133
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "9\\n5 0 9\\n4 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085133
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085163
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 0
-        },
-        {
-          "x": 4,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 7
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "10\\n6 0 9\\n4 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085164
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085194
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 6,
           "y": 1
         },
         {
           "x": 4,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 1
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "11\\n6 0 9\\n4 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085195
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085225
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 1
-        },
-        {
-          "x": 4,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 8
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "12\\n6 1 9\\n4 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085226
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085256
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 2
-        },
-        {
-          "x": 4,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 2
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "13\\n6 1 9\\n4 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085257
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085287
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 2
-        },
-        {
-          "x": 5,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 8
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "14\\n6 2 9\\n4 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085288
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085317
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 3
-        },
-        {
-          "x": 5,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 3
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "15\\n6 2 9\\n5 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085317
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085348
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 3
-        },
-        {
-          "x": 5,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 7
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "16\\n6 3 9\\n5 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085348
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085378
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 3
-        },
-        {
-          "x": 5,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 3
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "17\\n6 3 9\\n5 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085379
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085409
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 3
-        },
-        {
-          "x": 5,
           "y": 6
         }
       ],
@@ -1006,30 +245,33 @@ export const jsonstring = `
       ],
       "action": {
         "type": "move",
-        "x": 5,
+        "x": 4,
         "y": 6
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [],
-          "sent": []
+          "sent": [],
+          "distance": 7
         },
         {
-          "id": 1,
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [
             {
-              "message": "18\\n5 3 9\\n5 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085410
+              "message": "4\\n4 1 9\\n4 7 10\\n1\\n0 0 0 0\\n",
+              "timestamp": 1699800130965
             }
           ],
           "sent": [
             {
-              "message": "0 0 1",
-              "timestamp": 1695877085440
+              "message": "4 6",
+              "timestamp": 1699800130975
             }
           ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
+          "distance": 6
         }
       ]
     },
@@ -1037,12 +279,206 @@ export const jsonstring = `
       "currentPlayer": 0,
       "pawnPos": [
         {
+          "x": 4,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 6
+        }
+      ],
+      "walls": [
+        {
+          "x": 0,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        }
+      ],
+      "ownedWalls": [
+        8,
+        10
+      ],
+      "action": {
+        "type": "place",
+        "x": 2,
+        "y": 0,
+        "isVertical": 0
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [
+            {
+              "message": "5\\n4 1 9\\n4 6 10\\n1\\n0 0 0 0\\n",
+              "timestamp": 1699800130975
+            }
+          ],
+          "sent": [
+            {
+              "message": "2 0 0",
+              "timestamp": 1699800130985
+            }
+          ],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [],
+          "sent": [],
+          "distance": 6
+        }
+      ]
+    },
+    {
+      "currentPlayer": 1,
+      "pawnPos": [
+        {
+          "x": 4,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 5
+        }
+      ],
+      "walls": [
+        {
+          "x": 0,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        }
+      ],
+      "ownedWalls": [
+        8,
+        10
+      ],
+      "action": {
+        "type": "move",
+        "x": 4,
+        "y": 5
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [],
+          "sent": [],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [
+            {
+              "message": "6\\n4 1 8\\n4 6 10\\n2\\n0 0 0 0\\n2 0 0 0\\n",
+              "timestamp": 1699800130985
+            }
+          ],
+          "sent": [
+            {
+              "message": "4 5",
+              "timestamp": 1699800130995
+            }
+          ],
+          "distance": 5
+        }
+      ]
+    },
+    {
+      "currentPlayer": 0,
+      "pawnPos": [
+        {
+          "x": 4,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 5
+        }
+      ],
+      "walls": [
+        {
+          "x": 0,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
           "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        }
+      ],
+      "ownedWalls": [
+        7,
+        10
+      ],
+      "action": {
+        "type": "place",
+        "x": 5,
+        "y": 1,
+        "isVertical": 1
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [
+            {
+              "message": "7\\n4 1 8\\n4 5 10\\n2\\n0 0 0 0\\n2 0 0 0\\n",
+              "timestamp": 1699800130996
+            }
+          ],
+          "sent": [
+            {
+              "message": "5 1 1",
+              "timestamp": 1699800131006
+            }
+          ],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [],
+          "sent": [],
+          "distance": 5
+        }
+      ]
+    },
+    {
+      "currentPlayer": 1,
+      "pawnPos": [
+        {
+          "x": 4,
+          "y": 1
+        },
+        {
+          "x": 4,
           "y": 4
-        },
-        {
-          "x": 5,
-          "y": 6
         }
       ],
       "walls": [
@@ -1051,91 +487,53 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
         }
       ],
       "ownedWalls": [
-        9,
+        7,
         10
       ],
       "action": {
         "type": "move",
-        "x": 5,
+        "x": 4,
         "y": 4
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [],
+          "sent": [],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [
             {
-              "message": "19\\n5 3 9\\n5 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085441
+              "message": "8\\n4 1 7\\n4 5 10\\n3\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n",
+              "timestamp": 1699800131007
             }
           ],
           "sent": [
             {
-              "message": "0 0 0",
-              "timestamp": 1695877085470
+              "message": "4 4",
+              "timestamp": 1699800131017
             }
           ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 4
-        },
-        {
-          "x": 6,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 6
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "20\\n5 4 9\\n5 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085470
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085501
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
+          "distance": 4
         }
       ]
     },
@@ -1143,12 +541,12 @@ export const jsonstring = `
       "currentPlayer": 0,
       "pawnPos": [
         {
-          "x": 5,
-          "y": 3
+          "x": 4,
+          "y": 1
         },
         {
-          "x": 6,
-          "y": 6
+          "x": 4,
+          "y": 4
         }
       ],
       "walls": [
@@ -1157,91 +555,302 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
         }
       ],
       "ownedWalls": [
-        9,
+        6,
         10
       ],
       "action": {
-        "type": "move",
+        "type": "place",
         "x": 5,
+        "y": 3,
+        "isVertical": 1
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [
+            {
+              "message": "9\\n4 1 7\\n4 4 10\\n3\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n",
+              "timestamp": 1699800131018
+            }
+          ],
+          "sent": [
+            {
+              "message": "5 3 1",
+              "timestamp": 1699800131029
+            }
+          ],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [],
+          "sent": [],
+          "distance": 4
+        }
+      ]
+    },
+    {
+      "currentPlayer": 1,
+      "pawnPos": [
+        {
+          "x": 4,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 4
+        }
+      ],
+      "walls": [
+        {
+          "x": 0,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
+        }
+      ],
+      "ownedWalls": [
+        6,
+        9
+      ],
+      "action": {
+        "type": "place",
+        "x": 4,
+        "y": 0,
+        "isVertical": 1
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [],
+          "sent": [],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [
+            {
+              "message": "10\\n4 1 6\\n4 4 10\\n4\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n",
+              "timestamp": 1699800131029
+            }
+          ],
+          "sent": [
+            {
+              "message": "4 0 1",
+              "timestamp": 1699800131039
+            }
+          ],
+          "distance": 4
+        }
+      ]
+    },
+    {
+      "currentPlayer": 0,
+      "pawnPos": [
+        {
+          "x": 3,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 4
+        }
+      ],
+      "walls": [
+        {
+          "x": 0,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
+        }
+      ],
+      "ownedWalls": [
+        6,
+        9
+      ],
+      "action": {
+        "type": "move",
+        "x": 3,
+        "y": 1
+      },
+      "bots": [
+        {
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [
+            {
+              "message": "11\\n4 1 6\\n4 4 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131039
+            }
+          ],
+          "sent": [
+            {
+              "message": "4 0 0",
+              "timestamp": 1699800131049
+            }
+          ],
+          "error": "Invalid input! Reason: The new (horizontal) wall intersects a previous (vertical) wall.",
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [],
+          "sent": [],
+          "distance": 4
+        }
+      ]
+    },
+    {
+      "currentPlayer": 1,
+      "pawnPos": [
+        {
+          "x": 3,
+          "y": 1
+        },
+        {
+          "x": 4,
+          "y": 3
+        }
+      ],
+      "walls": [
+        {
+          "x": 0,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
+        }
+      ],
+      "ownedWalls": [
+        6,
+        9
+      ],
+      "action": {
+        "type": "move",
+        "x": 4,
         "y": 3
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [],
+          "sent": [],
+          "distance": 7
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [
             {
-              "message": "21\\n5 4 9\\n6 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085501
+              "message": "12\\n3 1 6\\n4 4 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131049
             }
           ],
           "sent": [
             {
-              "message": "0 0 0",
-              "timestamp": 1695877085531
+              "message": "4 3",
+              "timestamp": 1699800131060
             }
           ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 3
-        },
-        {
-          "x": 5,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 6
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "22\\n5 3 9\\n6 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085532
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085561
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
+          "distance": 3
         }
       ]
     },
@@ -1249,12 +858,12 @@ export const jsonstring = `
       "currentPlayer": 0,
       "pawnPos": [
         {
-          "x": 5,
+          "x": 3,
           "y": 2
         },
         {
-          "x": 5,
-          "y": 6
+          "x": 4,
+          "y": 3
         }
       ],
       "walls": [
@@ -1263,38 +872,65 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
         }
       ],
       "ownedWalls": [
-        9,
-        10
+        6,
+        9
       ],
       "action": {
         "type": "move",
-        "x": 5,
+        "x": 3,
         "y": 2
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [
             {
-              "message": "23\\n5 3 9\\n5 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085561
+              "message": "13\\n3 1 6\\n4 3 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131060
             }
           ],
           "sent": [
             {
-              "message": "0 0 0",
-              "timestamp": 1695877085592
+              "message": "3 2",
+              "timestamp": 1699800131071
             }
           ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
+          "distance": 6
         },
         {
-          "id": 1,
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [],
-          "sent": []
+          "sent": [],
+          "distance": 3
         }
       ]
     },
@@ -1302,12 +938,12 @@ export const jsonstring = `
       "currentPlayer": 1,
       "pawnPos": [
         {
-          "x": 5,
+          "x": 3,
           "y": 2
         },
         {
-          "x": 5,
-          "y": 5
+          "x": 4,
+          "y": 2
         }
       ],
       "walls": [
@@ -1316,38 +952,65 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
         }
       ],
       "ownedWalls": [
-        9,
-        10
+        6,
+        9
       ],
       "action": {
         "type": "move",
-        "x": 5,
-        "y": 5
+        "x": 4,
+        "y": 2
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [],
-          "sent": []
+          "sent": [],
+          "distance": 6
         },
         {
-          "id": 1,
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [
             {
-              "message": "24\\n5 2 9\\n5 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085592
+              "message": "14\\n3 2 6\\n4 3 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131071
             }
           ],
           "sent": [
             {
-              "message": "0 0 1",
-              "timestamp": 1695877085622
+              "message": "4 2",
+              "timestamp": 1699800131081
             }
           ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
+          "distance": 2
         }
       ]
     },
@@ -1355,12 +1018,12 @@ export const jsonstring = `
       "currentPlayer": 0,
       "pawnPos": [
         {
-          "x": 5,
-          "y": 1
+          "x": 3,
+          "y": 3
         },
         {
-          "x": 5,
-          "y": 5
+          "x": 4,
+          "y": 2
         }
       ],
       "walls": [
@@ -1369,38 +1032,65 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
         }
       ],
       "ownedWalls": [
-        9,
-        10
+        6,
+        9
       ],
       "action": {
         "type": "move",
-        "x": 5,
-        "y": 1
+        "x": 3,
+        "y": 3
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [
             {
-              "message": "25\\n5 2 9\\n5 5 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085623
+              "message": "15\\n3 2 6\\n4 2 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131081
             }
           ],
           "sent": [
             {
-              "message": "0 0 0",
-              "timestamp": 1695877085653
+              "message": "3 3",
+              "timestamp": 1699800131092
             }
           ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
+          "distance": 5
         },
         {
-          "id": 1,
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [],
-          "sent": []
+          "sent": [],
+          "distance": 2
         }
       ]
     },
@@ -1408,12 +1098,12 @@ export const jsonstring = `
       "currentPlayer": 1,
       "pawnPos": [
         {
-          "x": 5,
-          "y": 1
+          "x": 3,
+          "y": 3
         },
         {
-          "x": 6,
-          "y": 5
+          "x": 4,
+          "y": 1
         }
       ],
       "walls": [
@@ -1422,38 +1112,65 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
         }
       ],
       "ownedWalls": [
-        9,
-        10
+        6,
+        9
       ],
       "action": {
         "type": "move",
-        "x": 6,
-        "y": 5
+        "x": 4,
+        "y": 1
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [],
-          "sent": []
+          "sent": [],
+          "distance": 5
         },
         {
-          "id": 1,
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [
             {
-              "message": "26\\n5 1 9\\n5 5 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085654
+              "message": "16\\n3 3 6\\n4 2 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131093
             }
           ],
           "sent": [
             {
-              "message": "0 0 1",
-              "timestamp": 1695877085684
+              "message": "4 1",
+              "timestamp": 1699800131104
             }
           ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
+          "distance": 1
         }
       ]
     },
@@ -1461,65 +1178,12 @@ export const jsonstring = `
       "currentPlayer": 0,
       "pawnPos": [
         {
-          "x": 6,
-          "y": 1
-        },
-        {
-          "x": 6,
-          "y": 5
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 1
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "27\\n5 1 9\\n6 5 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085685
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085714
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 1
-        },
-        {
-          "x": 6,
+          "x": 3,
           "y": 4
+        },
+        {
+          "x": 4,
+          "y": 1
         }
       ],
       "walls": [
@@ -1528,634 +1192,78 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "isVertical": 1,
+          "who": 1
         }
       ],
       "ownedWalls": [
-        9,
-        10
+        6,
+        9
       ],
       "action": {
         "type": "move",
-        "x": 6,
+        "x": 3,
         "y": 4
       },
       "bots": [
         {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
           "received": [
             {
-              "message": "28\\n6 1 9\\n6 5 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085714
+              "message": "17\\n3 3 6\\n4 1 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131104
             }
           ],
           "sent": [
             {
-              "message": "0 0 1",
-              "timestamp": 1695877085745
+              "message": "3 4",
+              "timestamp": 1699800131115
             }
           ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
+          "distance": 4
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
+          "received": [],
+          "sent": [],
+          "distance": 1
         }
       ]
     },
     {
-      "currentPlayer": 0,
+      "currentPlayer": 1,
       "pawnPos": [
         {
-          "x": 6,
-          "y": 2
-        },
-        {
-          "x": 6,
+          "x": 3,
           "y": 4
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 2
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "29\\n6 1 9\\n6 4 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085745
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085776
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 2
-        },
-        {
-          "x": 6,
-          "y": 5
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 5
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "30\\n6 2 9\\n6 4 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085776
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085806
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 1
-        },
-        {
-          "x": 6,
-          "y": 5
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 1
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "31\\n6 2 9\\n6 5 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085807
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085837
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 1
-        },
-        {
-          "x": 6,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 6
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "32\\n6 1 9\\n6 5 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085837
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085867
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 1
-        },
-        {
-          "x": 6,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 1
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "33\\n6 1 9\\n6 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085868
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085898
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 1
-        },
-        {
-          "x": 5,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 6
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "34\\n5 1 9\\n6 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085898
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085929
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 5,
-          "y": 6
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "35\\n5 1 9\\n5 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085929
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877085959
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 5,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 7
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "36\\n5 0 9\\n5 6 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085960
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877085989
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 1
-        },
-        {
-          "x": 5,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 1
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "37\\n5 0 9\\n5 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877085989
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877086019
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 1
-        },
-        {
-          "x": 5,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 8
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "38\\n5 1 9\\n5 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086020
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877086050
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 5,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "39\\n5 1 9\\n5 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086051
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877086081
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
         },
         {
           "x": 4,
-          "y": 8
+          "y": 0
         }
       ],
       "walls": [
@@ -2164,276 +1272,35 @@ export const jsonstring = `
           "y": 0,
           "isVertical": 0,
           "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 8
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
         },
         {
-          "id": 1,
-          "received": [
-            {
-              "message": "40\\n5 0 9\\n5 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086081
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877086112
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
+          "x": 2,
+          "y": 0,
+          "isVertical": 0,
+          "who": 0
+        },
         {
-          "x": 6,
-          "y": 0
+          "x": 5,
+          "y": 1,
+          "isVertical": 1,
+          "who": 0
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "isVertical": 1,
+          "who": 0
         },
         {
           "x": 4,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
           "y": 0,
-          "isVertical": 0,
-          "who": 0
+          "isVertical": 1,
+          "who": 1
         }
       ],
       "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 6,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "41\\n5 0 9\\n4 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086112
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877086142
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 6,
-          "y": 0
-        },
-        {
-          "x": 3,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 3,
-        "y": 8
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "42\\n6 0 9\\n4 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086142
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877086173
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 3,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 5,
-        "y": 0
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "43\\n6 0 9\\n3 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086173
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877086203
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 5,
-          "y": 0
-        },
-        {
-          "x": 3,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 3,
-        "y": 7
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "44\\n5 0 9\\n3 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086204
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877086233
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 4,
-          "y": 0
-        },
-        {
-          "x": 3,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
+        6,
+        9
       ],
       "action": {
         "type": "move",
@@ -2442,290 +1309,28 @@ export const jsonstring = `
       },
       "bots": [
         {
-          "id": 0,
+          "id": "e869aa89fb760fd621e6a7f9",
+          "index": 0,
+          "received": [],
+          "sent": [],
+          "distance": 4
+        },
+        {
+          "id": "e1c2d3a5fc5309de6595067b",
+          "index": 1,
           "received": [
             {
-              "message": "45\\n5 0 9\\n3 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086233
+              "message": "18\\n3 4 6\\n4 1 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "timestamp": 1699800131115
             }
           ],
           "sent": [
             {
-              "message": "0 0 0",
-              "timestamp": 1695877086264
+              "message": "4 0",
+              "timestamp": 1699800131125
             }
           ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 4,
-          "y": 0
-        },
-        {
-          "x": 3,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 3,
-        "y": 8
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "46\\n4 0 9\\n3 7 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086264
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877086294
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 4,
-          "y": 1
-        },
-        {
-          "x": 3,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 1
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "47\\n4 0 9\\n3 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086294
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877086325
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 4,
-          "y": 1
-        },
-        {
-          "x": 4,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 8
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "48\\n4 1 9\\n3 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086325
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877086355
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
-        }
-      ]
-    },
-    {
-      "currentPlayer": 0,
-      "pawnPos": [
-        {
-          "x": 4,
-          "y": 2
-        },
-        {
-          "x": 4,
-          "y": 8
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 2
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [
-            {
-              "message": "49\\n4 1 9\\n4 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086355
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 0",
-              "timestamp": 1695877086386
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (horizontal) wall intersects a previous (horizontal) wall."
-        },
-        {
-          "id": 1,
-          "received": [],
-          "sent": []
-        }
-      ]
-    },
-    {
-      "currentPlayer": 1,
-      "pawnPos": [
-        {
-          "x": 4,
-          "y": 2
-        },
-        {
-          "x": 4,
-          "y": 7
-        }
-      ],
-      "walls": [
-        {
-          "x": 0,
-          "y": 0,
-          "isVertical": 0,
-          "who": 0
-        }
-      ],
-      "ownedWalls": [
-        9,
-        10
-      ],
-      "action": {
-        "type": "move",
-        "x": 4,
-        "y": 7
-      },
-      "bots": [
-        {
-          "id": 0,
-          "received": [],
-          "sent": []
-        },
-        {
-          "id": 1,
-          "received": [
-            {
-              "message": "50\\n4 2 9\\n4 8 10\\n1\\n0 0 0 0\\n",
-              "timestamp": 1695877086386
-            }
-          ],
-          "sent": [
-            {
-              "message": "0 0 1",
-              "timestamp": 1695877086416
-            }
-          ],
-          "commandError": "Invalid input! Reason: The new (vertical) wall intersects a previous (horizontal) wall."
+          "distance": 0
         }
       ]
     }

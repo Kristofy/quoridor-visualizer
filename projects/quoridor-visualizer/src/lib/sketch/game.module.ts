@@ -3,7 +3,7 @@ import { JsonPlayer, JsonTick } from './interfaces';
 
 const ACCENT_COLOR = 144;
 const BG_COLOR = 190;
-const COLORS = ['#a02214', '#14c214'];
+export const COLORS = ['#a02214', '#14c214'];
 
 export class GameModule {
   current!: JsonTick;

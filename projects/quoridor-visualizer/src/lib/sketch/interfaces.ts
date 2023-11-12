@@ -37,6 +37,7 @@ export interface JsonBot {
   error?: string | null;
   botLog?: string | null;
   offline?: true;
+  distance: number;
 }
 
 export type JsonAction =
@@ -60,4 +61,5 @@ export interface JsonMessage {
 export interface JsonPlayer {
   id: string;
   name: string;
+  index: number;
 }

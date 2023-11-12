@@ -8,7 +8,7 @@ import {
   faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 import p5 from 'p5';
-import { GameModule } from './sketch/game.module';
+import { COLORS, GameModule } from './sketch/game.module';
 import { BotMessageBundle } from './sketch/message';
 import { JsonInit, JsonLog, JsonTick } from './sketch/interfaces';
 
@@ -20,6 +20,8 @@ import { JsonInit, JsonLog, JsonTick } from './sketch/interfaces';
 export class QuoridorVisualizerComponent implements OnChanges {
   @Input() public jsonstring!: string;
   @Input() public bot_id!: string;
+
+  public COLORS = COLORS;
 
   public selectedPlayer!: { id: string; index: number };
 
