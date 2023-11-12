@@ -20,11 +20,13 @@ export class GameModule {
     this.update(tick);
   }
 
+  protected readonly margin = 50;
+
   render(): void {
     this.ctx.background(BG_COLOR);
 
-    const size_x = this.ctx.width / this.boardSize;
-    const size_y = this.ctx.height / this.boardSize;
+    const size_x = (this.ctx.width - 2 * this.margin) / this.boardSize;
+    const size_y = (this.ctx.height - 2 * this.margin) / this.boardSize;
     // Should be equal
     const size = Math.min(size_x, size_y);
 
@@ -34,17 +36,36 @@ export class GameModule {
     this.ctx.fill(ACCENT_COLOR);
 
     for (let row = 0; row <= this.boardSize; row++) {
-      this.ctx.line(0, row * size, this.ctx.width, row * size);
+      this.ctx.line(
+        this.margin,
+        this.margin + row * size,
+        this.margin + this.boardSize * size,
+        this.margin + row * size,
+      );
     }
 
     for (let col = 0; col <= this.boardSize; col++) {
-      this.ctx.line(col * size, 0, col * size, this.ctx.height);
+      this.ctx.line(
+        this.margin + col * size,
+        this.margin,
+        this.margin + col * size,
+        this.margin + this.boardSize * size,
+      );
+    }
+
+    this.ctx.strokeWeight(1);
+    this.ctx.textSize(16);
+    for (let row = 0; row < this.boardSize; row++) {
+      this.ctx.text(row, this.margin / 2, this.margin + row * size + size / 2);
+    }
+    for (let col = 0; col < this.boardSize; col++) {
+      this.ctx.text(col, this.margin + col * size + size / 2, this.margin / 2);
     }
 
     for (let row = 0; row <= this.boardSize; row++) {
       for (let col = 0; col <= this.boardSize; col++) {
-        const x = col * size;
-        const y = row * size;
+        const x = this.margin + col * size;
+        const y = this.margin + row * size;
         this.ctx.circle(x, y, 8);
       }
     }
@@ -61,7 +82,11 @@ export class GameModule {
       this.ctx.strokeWeight(2);
 
       const { x, y } = this.current.pawnPos[i];
-      this.ctx.circle(x * size + size / 2, y * size + size / 2, size / 2 - 4);
+      this.ctx.circle(
+        this.margin + x * size + size / 2,
+        this.margin + y * size + size / 2,
+        size / 2 - 4,
+      );
     }
 
     if (this.current.action.type === 'place') {
@@ -71,7 +96,11 @@ export class GameModule {
       this.ctx.stroke(255);
       this.ctx.noFill();
       this.ctx.strokeWeight(2);
-      this.ctx.circle(x * size + size / 2, y * size + size / 2, size / 2 - 2);
+      this.ctx.circle(
+        this.margin + x * size + size / 2,
+        this.margin + y * size + size / 2,
+        size / 2 - 2,
+      );
     }
   }
 
@@ -89,11 +118,11 @@ export class GameModule {
     },
     highlight: boolean,
   ) {
-    const start_x = size * (wall.x + (wall.isVertical ? 1 : 0));
-    const start_y = size * (wall.y + (wall.isVertical ? 0 : 1));
+    const start_x = this.margin + size * (wall.x + (wall.isVertical ? 1 : 0));
+    const start_y = this.margin + size * (wall.y + (wall.isVertical ? 0 : 1));
 
-    const end_x = size * (wall.x + (wall.isVertical ? 1 : 2));
-    const end_y = size * (wall.y + (wall.isVertical ? 2 : 1));
+    const end_x = this.margin + size * (wall.x + (wall.isVertical ? 1 : 2));
+    const end_y = this.margin + size * (wall.y + (wall.isVertical ? 2 : 1));
 
     if (highlight) {
       this.ctx.stroke(255);
