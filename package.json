@@ -16,6 +16,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "publish-lib": "ng build quoridor-visualizer && npm publish ./dist/quoridor-visualizer",
+    "proto:gen": "npx protoc --ts_opt ts_nocheck --ts_opt long_type_number --experimental_allow_proto3_optional --ts_out projects/quoridor-visualizer/src/lib/protobuf --proto_path projects/quoridor-visualizer/src/lib/protobuf projects/quoridor-visualizer/src/lib/protobuf/match_log.proto",
     "lint": "npm run eslint:check && npm run prettier:check",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
     "prettier:check": "npx prettier --check projects",
@@ -65,6 +66,7 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-packagr": "^16.2.3",
     "prettier": "^2.7.1",
+    "@protobuf-ts/plugin": "^2.9.1",
     "typescript": "~5.1.6"
   }
 }

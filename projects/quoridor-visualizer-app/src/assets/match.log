@@ -1,4 +1,3 @@
-export const jsonstring = `
 {
   "init": {
     "players": [
@@ -43,7 +42,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "2\\n0\\n9\\n4 0 10\\n4 8 10",
+              "message": "2\n0\n9\n4 0 10\n4 8 10",
               "timestamp": 1699800130928
             }
           ],
@@ -55,7 +54,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "2\\n1\\n9\\n4 0 10\\n4 8 10",
+              "message": "2\n1\n9\n4 0 10\n4 8 10",
               "timestamp": 1699800130929
             }
           ],
@@ -92,7 +91,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "1\\n4 0 10\\n4 8 10\\n0\\n",
+              "message": "1\n4 0 10\n4 8 10\n0\n",
               "timestamp": 1699800130930
             }
           ],
@@ -148,7 +147,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "2\\n4 1 10\\n4 8 10\\n0\\n",
+              "message": "2\n4 1 10\n4 8 10\n0\n",
               "timestamp": 1699800130942
             }
           ],
@@ -198,7 +197,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "3\\n4 1 10\\n4 7 10\\n0\\n",
+              "message": "3\n4 1 10\n4 7 10\n0\n",
               "timestamp": 1699800130954
             }
           ],
@@ -261,7 +260,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "4\\n4 1 9\\n4 7 10\\n1\\n0 0 0 0\\n",
+              "message": "4\n4 1 9\n4 7 10\n1\n0 0 0 0\n",
               "timestamp": 1699800130965
             }
           ],
@@ -317,7 +316,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "5\\n4 1 9\\n4 6 10\\n1\\n0 0 0 0\\n",
+              "message": "5\n4 1 9\n4 6 10\n1\n0 0 0 0\n",
               "timestamp": 1699800130975
             }
           ],
@@ -386,7 +385,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "6\\n4 1 8\\n4 6 10\\n2\\n0 0 0 0\\n2 0 0 0\\n",
+              "message": "6\n4 1 8\n4 6 10\n2\n0 0 0 0\n2 0 0 0\n",
               "timestamp": 1699800130985
             }
           ],
@@ -448,7 +447,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "7\\n4 1 8\\n4 5 10\\n2\\n0 0 0 0\\n2 0 0 0\\n",
+              "message": "7\n4 1 8\n4 5 10\n2\n0 0 0 0\n2 0 0 0\n",
               "timestamp": 1699800130996
             }
           ],
@@ -523,7 +522,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "8\\n4 1 7\\n4 5 10\\n3\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n",
+              "message": "8\n4 1 7\n4 5 10\n3\n0 0 0 0\n2 0 0 0\n5 1 1 0\n",
               "timestamp": 1699800131007
             }
           ],
@@ -591,7 +590,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "9\\n4 1 7\\n4 4 10\\n3\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n",
+              "message": "9\n4 1 7\n4 4 10\n3\n0 0 0 0\n2 0 0 0\n5 1 1 0\n",
               "timestamp": 1699800131018
             }
           ],
@@ -679,7 +678,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "10\\n4 1 6\\n4 4 10\\n4\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n",
+              "message": "10\n4 1 6\n4 4 10\n4\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n",
               "timestamp": 1699800131029
             }
           ],
@@ -752,7 +751,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "11\\n4 1 6\\n4 4 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "11\n4 1 6\n4 4 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131039
             }
           ],
@@ -840,7 +839,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "12\\n3 1 6\\n4 4 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "12\n3 1 6\n4 4 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131049
             }
           ],
@@ -913,7 +912,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "13\\n3 1 6\\n4 3 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "13\n3 1 6\n4 3 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131060
             }
           ],
@@ -1000,7 +999,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "14\\n3 2 6\\n4 3 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "14\n3 2 6\n4 3 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131071
             }
           ],
@@ -1073,7 +1072,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "15\\n3 2 6\\n4 2 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "15\n3 2 6\n4 2 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131081
             }
           ],
@@ -1160,7 +1159,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "16\\n3 3 6\\n4 2 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "16\n3 3 6\n4 2 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131093
             }
           ],
@@ -1233,7 +1232,7 @@ export const jsonstring = `
           "index": 0,
           "received": [
             {
-              "message": "17\\n3 3 6\\n4 1 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "17\n3 3 6\n4 1 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131104
             }
           ],
@@ -1320,7 +1319,7 @@ export const jsonstring = `
           "index": 1,
           "received": [
             {
-              "message": "18\\n3 4 6\\n4 1 9\\n5\\n0 0 0 0\\n2 0 0 0\\n5 1 1 0\\n5 3 1 0\\n4 0 1 1\\n",
+              "message": "18\n3 4 6\n4 1 9\n5\n0 0 0 0\n2 0 0 0\n5 1 1 0\n5 3 1 0\n4 0 1 1\n",
               "timestamp": 1699800131115
             }
           ],
@@ -1336,4 +1335,3 @@ export const jsonstring = `
     }
   ]
 }
-`;

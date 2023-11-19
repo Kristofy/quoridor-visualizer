@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { jsonstring } from './test';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,26 @@ import { jsonstring } from './test';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public jsonstring = jsonstring;
-  public bot_id = JSON.parse(jsonstring).init.players[0].id;
+  public matchLog: string | ArrayBuffer = '';
+
+  onFileSelected(event: Event) {
+    const file: File = (event.target as unknown as { files: File[] }).files[0];
+    if (file) {
+      const reader = new FileReader();
+      if (file.name.endsWith('.bin')) {
+        reader.readAsArrayBuffer(file);
+      } else {
+        reader.readAsText(file, 'utf8');
+      }
+      reader.onload = (event) => {
+        const content = event.target?.result;
+        if (content) {
+          this.matchLog = content;
+        }
+      };
+      reader.onerror = (error) => {
+        console.error(error);
+      };
+    }
+  }
 }

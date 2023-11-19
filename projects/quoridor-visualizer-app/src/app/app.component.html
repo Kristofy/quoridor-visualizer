@@ -1,1 +1,5 @@
-<lib-quoridor-visualizer [jsonstring]="jsonstring" [bot_id]="bot_id"></lib-quoridor-visualizer>
+<ng-container *ngIf="!matchLog">
+  <label for="matchLog">match log file (.bin is binary)</label><br />
+  <input type="file" id="matchLog" (change)="onFileSelected($event)" />
+</ng-container>
+<lib-quoridor-visualizer [matchLog]="matchLog"></lib-quoridor-visualizer>

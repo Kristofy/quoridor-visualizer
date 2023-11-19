@@ -11,6 +11,7 @@ import p5 from 'p5';
 import { COLORS, GameModule } from './sketch/game.module';
 import { BotMessageBundle } from './sketch/message';
 import { JsonInit, JsonLog, JsonTick } from './sketch/interfaces';
+import { Match } from './protobuf/match_log';
 
 @Component({
   selector: 'lib-quoridor-visualizer',
@@ -18,8 +19,8 @@ import { JsonInit, JsonLog, JsonTick } from './sketch/interfaces';
   styleUrls: ['./quoridor-visualizer.component.scss'],
 })
 export class QuoridorVisualizerComponent implements OnChanges {
-  @Input() public jsonstring!: string;
-  @Input() public bot_id!: string;
+  @Input() public matchLog!: string | ArrayBuffer;
+  @Input() public bot_id?: string;
 
   public COLORS = COLORS;
 
@@ -119,9 +120,13 @@ export class QuoridorVisualizerComponent implements OnChanges {
     const board_size = 600;
 
     ctx.setup = () => {
-      const { init, ticks }: { init: JsonInit; ticks: JsonTick[] } = (this.jsonLog = JSON.parse(
-        this.jsonstring,
-      ));
+      const { init, ticks }: { init: JsonInit; ticks: JsonTick[] } = (this.jsonLog =
+        typeof this.matchLog === 'string'
+          ? JSON.parse(this.matchLog)
+          : Match.fromBinary(new Uint8Array(this.matchLog)));
+      if (this.bot_id === undefined) {
+        this.bot_id = init.players[0].id;
+      }
       const { players, boardSize, numOfWalls } = init;
 
       const clientHeight =
@@ -195,7 +200,7 @@ export class QuoridorVisualizerComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    if (this.jsonstring) {
+    if (this.matchLog) {
       this.instance = new p5(this.sketch.bind(this));
     }
   }
