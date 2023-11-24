@@ -1,20 +1,20 @@
 import p5 from 'p5';
-import { JsonPlayer, JsonTick } from './interfaces';
+import { Player, Tick } from '../protobuf/match_log';
 
 const ACCENT_COLOR = 144;
 const BG_COLOR = 190;
 export const COLORS = ['#a02214', '#14c214'];
 
 export class GameModule {
-  current!: JsonTick;
+  current!: Tick;
   ctx: p5;
 
   constructor(
     ctx: p5,
-    readonly players: JsonPlayer[],
+    readonly players: Player[],
     protected boardSize: number,
     protected numOfWalls: number,
-    tick: JsonTick,
+    tick: Tick,
   ) {
     this.ctx = ctx;
     this.update(tick);
@@ -89,10 +89,10 @@ export class GameModule {
       );
     }
 
-    if (this.current.action.type === 'place') {
-      this.drawWall(size, { ...this.current.action, who: this.current.currentPlayer }, true);
-    } else if (this.current.action.type === 'move') {
-      const { x, y } = this.current.action;
+    if (this.current.action.oneofKind === 'place') {
+      this.drawWall(size, { ...this.current.action.place, who: this.current.currentPlayer }, true);
+    } else if (this.current.action.oneofKind === 'move') {
+      const { x, y } = this.current.action.move;
       this.ctx.stroke(255);
       this.ctx.noFill();
       this.ctx.strokeWeight(2);
@@ -104,7 +104,7 @@ export class GameModule {
     }
   }
 
-  update(tick: JsonTick) {
+  update(tick: Tick) {
     this.current = tick;
   }
 

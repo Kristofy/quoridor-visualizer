@@ -9,9 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import p5 from 'p5';
 import { COLORS, GameModule } from './sketch/game.module';
-import { BotMessageBundle } from './sketch/message';
-import { JsonInit, JsonLog, JsonTick } from './sketch/interfaces';
-import { Match } from './protobuf/match_log';
+import { Bot, Init, Match, Tick } from './protobuf/match_log';
 
 @Component({
   selector: 'lib-quoridor-visualizer',
@@ -32,10 +30,9 @@ export class QuoridorVisualizerComponent implements OnChanges {
   public end_arrow = faAngleDoubleRight;
   public pause_icon = faPause;
   public star_icon = faPlay;
-  public messages: BotMessageBundle | null = null;
+  public messages: Bot | null = null;
   public game?: GameModule;
 
-  private last_set_time = 0;
   public time = 0;
   public last = 0;
   public isAnimating = false;
@@ -45,16 +42,14 @@ export class QuoridorVisualizerComponent implements OnChanges {
   private last_time = 0;
   private accFrameTime = 0;
 
-  ticks: JsonTick[] = [];
-
-  private jsonLog?: JsonLog;
+  ticks: Tick[] = [];
 
   compareSelectedPlayers(player1?: { id: string }, player2?: { id: string }) {
     return !!(player1 && player2 && player1.id == player2.id);
   }
 
   onSelectedPlayerChanged() {
-    this.messages = new BotMessageBundle(this.ticks[this.time].bots[this.selectedPlayer.index]);
+    this.messages = this.ticks[this.time].bots[this.selectedPlayer.index];
   }
 
   onTickChanged(new_tick: number | null): void {
@@ -120,10 +115,10 @@ export class QuoridorVisualizerComponent implements OnChanges {
     const board_size = 600;
 
     ctx.setup = () => {
-      const { init, ticks }: { init: JsonInit; ticks: JsonTick[] } = (this.jsonLog =
+      const { init, ticks }: { init: Init; ticks: Tick[] } =
         typeof this.matchLog === 'string'
           ? JSON.parse(this.matchLog)
-          : Match.fromBinary(new Uint8Array(this.matchLog)));
+          : Match.fromBinary(new Uint8Array(this.matchLog));
       if (this.bot_id === undefined) {
         this.bot_id = init.players[0].id;
       }
@@ -176,9 +171,7 @@ export class QuoridorVisualizerComponent implements OnChanges {
         this.ticks[this.time]?.bots[this.selectedPlayer.index];
         this.game.render();
         if (last_tick != this.time) {
-          this.messages = new BotMessageBundle(
-            this.ticks[this.time].bots[this.selectedPlayer.index],
-          );
+          this.messages = this.ticks[this.time].bots[this.selectedPlayer.index];
         }
         last_tick = this.time;
       }
@@ -203,5 +196,15 @@ export class QuoridorVisualizerComponent implements OnChanges {
     if (this.matchLog) {
       this.instance = new p5(this.sketch.bind(this));
     }
+  }
+
+  timestampToString(timestamp: number) {
+    return new Date(timestamp).toLocaleTimeString(undefined, {
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      fractionalSecondDigits: 3,
+    });
   }
 }

@@ -104,28 +104,20 @@
       <div class="bordered messages-container">
         <h1 class="messages-header">Messages:</h1>
         <div class="messages">
-          <div
-            *ngIf="messages?.error !== null && messages?.error?.length !== 0"
-            class="error-message"
-          >
+          <div *ngIf="messages?.error" class="error-message">
             <h1>bot error</h1>
             <div class="">
-              <div *ngFor="let error of messages?.error">
-                <div class="message">
-                  <div class="message-content">
-                    <div class="message-text">
-                      {{ error.message }}
-                    </div>
-                    <div class="message-time">
-                      {{ error.timestamp }}
-                    </div>
+              <div class="message">
+                <div class="message-content">
+                  <div class="message-text">
+                    {{ messages?.error }}
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div *ngIf="messages?.received !== null" class="received-message">
+          <div *ngIf="messages?.received" class="received-message">
             <h1>bot received</h1>
             <div class="">
               <div *ngFor="let received of messages?.received">
@@ -135,7 +127,7 @@
                       {{ received.message }}
                     </div>
                     <div class="message-time">
-                      {{ received.timestamp }}
+                      {{ timestampToString(received.timestamp) }}
                     </div>
                   </div>
                 </div>
@@ -143,7 +135,7 @@
             </div>
           </div>
 
-          <div *ngIf="messages?.sent !== null" class="sent-message">
+          <div *ngIf="messages?.sent" class="sent-message">
             <h1>bot sent</h1>
             <div class="">
               <div *ngFor="let sent of messages?.sent">
@@ -153,7 +145,7 @@
                       {{ sent.message }}
                     </div>
                     <div class="message-time">
-                      {{ sent.timestamp }}
+                      {{ timestampToString(sent.timestamp) }}
                     </div>
                   </div>
                 </div>
@@ -161,18 +153,13 @@
             </div>
           </div>
 
-          <div
-            *ngIf="messages?.botLog !== null && messages?.botLog?.length !== 0"
-            class="log-message"
-          >
+          <div *ngIf="messages?.botLog" class="log-message">
             <h1>bot log</h1>
             <div class="">
-              <div *ngFor="let botLog of messages?.botLog">
-                <div class="message">
-                  <div class="message-content">
-                    <div class="message-text">
-                      {{ botLog.message }}
-                    </div>
+              <div class="message">
+                <div class="message-content">
+                  <div class="message-text">
+                    {{ messages?.botLog }}
                   </div>
                 </div>
               </div>

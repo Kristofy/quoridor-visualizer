@@ -85,11 +85,42 @@ export interface Tick {
    */
   ownedWalls: number[];
   /**
-   * @generated from protobuf field: Action action = 5;
+   * @generated from protobuf oneof: action
    */
-  action?: Action;
+  action:
+    | {
+        oneofKind: 'start';
+        /**
+         * @generated from protobuf field: bool start = 5;
+         */
+        start: boolean;
+      }
+    | {
+        oneofKind: 'move';
+        /**
+         * @generated from protobuf field: MoveAction move = 6;
+         */
+        move: MoveAction;
+      }
+    | {
+        oneofKind: 'place';
+        /**
+         * @generated from protobuf field: PlaceAction place = 7;
+         */
+        place: PlaceAction;
+      }
+    | {
+        oneofKind: 'stuck';
+        /**
+         * @generated from protobuf field: bool stuck = 8;
+         */
+        stuck: boolean;
+      }
+    | {
+        oneofKind: undefined;
+      };
   /**
-   * @generated from protobuf field: repeated Bot bots = 6;
+   * @generated from protobuf field: repeated Bot bots = 9;
    */
   bots: Bot[];
 }
@@ -126,46 +157,6 @@ export interface Wall {
    * @generated from protobuf field: int32 who = 4;
    */
   who: number;
-}
-/**
- * @generated from protobuf message Action
- */
-export interface Action {
-  /**
-   * @generated from protobuf oneof: action
-   */
-  action:
-    | {
-        oneofKind: 'start';
-        /**
-         * @generated from protobuf field: bool start = 1;
-         */
-        start: boolean;
-      }
-    | {
-        oneofKind: 'move';
-        /**
-         * @generated from protobuf field: MoveAction move = 2;
-         */
-        move: MoveAction;
-      }
-    | {
-        oneofKind: 'place';
-        /**
-         * @generated from protobuf field: PlaceAction place = 3;
-         */
-        place: PlaceAction;
-      }
-    | {
-        oneofKind: 'stuck';
-        /**
-         * @generated from protobuf field: bool stuck = 4;
-         */
-        stuck: boolean;
-      }
-    | {
-        oneofKind: undefined;
-      };
 }
 /**
  * @generated from protobuf message MoveAction
@@ -229,6 +220,10 @@ export interface Bot {
    * @generated from protobuf field: int32 distance = 7;
    */
   distance: number;
+  /**
+   * @generated from protobuf field: optional bool offline = 8;
+   */
+  offline?: boolean;
 }
 /**
  * @generated from protobuf message BotMessage
@@ -263,10 +258,10 @@ class Match$Type extends MessageType<Match> {
     options: BinaryReadOptions,
     target?: Match,
   ): Match {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* Init init */ 1:
           message.init = Init.internalBinaryRead(reader, reader.uint32(), options, message.init);
@@ -275,12 +270,12 @@ class Match$Type extends MessageType<Match> {
           message.ticks.push(Tick.internalBinaryRead(reader, reader.uint32(), options));
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -312,7 +307,7 @@ class Match$Type extends MessageType<Match> {
         writer.tag(2, WireType.LengthDelimited).fork(),
         options,
       ).join();
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -342,10 +337,10 @@ class Init$Type extends MessageType<Init> {
     options: BinaryReadOptions,
     target?: Init,
   ): Init {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* repeated Player players */ 1:
           message.players.push(Player.internalBinaryRead(reader, reader.uint32(), options));
@@ -357,12 +352,12 @@ class Init$Type extends MessageType<Init> {
           message.numOfWalls = reader.int32();
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -391,7 +386,7 @@ class Init$Type extends MessageType<Init> {
     if (message.boardSize !== 0) writer.tag(2, WireType.Varint).int32(message.boardSize);
     /* int32 num_of_walls = 3; */
     if (message.numOfWalls !== 0) writer.tag(3, WireType.Varint).int32(message.numOfWalls);
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -421,10 +416,10 @@ class Player$Type extends MessageType<Player> {
     options: BinaryReadOptions,
     target?: Player,
   ): Player {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* string id */ 1:
           message.id = reader.string();
@@ -436,12 +431,12 @@ class Player$Type extends MessageType<Player> {
           message.name = reader.string();
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -465,7 +460,7 @@ class Player$Type extends MessageType<Player> {
     if (message.index !== 0) writer.tag(2, WireType.Varint).int32(message.index);
     /* string name = 3; */
     if (message.name !== '') writer.tag(3, WireType.LengthDelimited).string(message.name);
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -494,12 +489,22 @@ class Tick$Type extends MessageType<Tick> {
         repeat: 1 /*RepeatType.PACKED*/,
         T: 5 /*ScalarType.INT32*/,
       },
-      { no: 5, name: 'action', kind: 'message', T: () => Action },
-      { no: 6, name: 'bots', kind: 'message', repeat: 1 /*RepeatType.PACKED*/, T: () => Bot },
+      { no: 5, name: 'start', kind: 'scalar', oneof: 'action', T: 8 /*ScalarType.BOOL*/ },
+      { no: 6, name: 'move', kind: 'message', oneof: 'action', T: () => MoveAction },
+      { no: 7, name: 'place', kind: 'message', oneof: 'action', T: () => PlaceAction },
+      { no: 8, name: 'stuck', kind: 'scalar', oneof: 'action', T: 8 /*ScalarType.BOOL*/ },
+      { no: 9, name: 'bots', kind: 'message', repeat: 1 /*RepeatType.PACKED*/, T: () => Bot },
     ]);
   }
   create(value?: PartialMessage<Tick>): Tick {
-    const message = { currentPlayer: 0, pawnPos: [], walls: [], ownedWalls: [], bots: [] };
+    const message = {
+      currentPlayer: 0,
+      pawnPos: [],
+      walls: [],
+      ownedWalls: [],
+      action: { oneofKind: undefined },
+      bots: [],
+    };
     globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
     if (value !== undefined) reflectionMergePartial<Tick>(this, message, value);
     return message;
@@ -510,10 +515,10 @@ class Tick$Type extends MessageType<Tick> {
     options: BinaryReadOptions,
     target?: Tick,
   ): Tick {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* int32 current_player */ 1:
           message.currentPlayer = reader.int32();
@@ -530,24 +535,50 @@ class Tick$Type extends MessageType<Tick> {
               message.ownedWalls.push(reader.int32());
           else message.ownedWalls.push(reader.int32());
           break;
-        case /* Action action */ 5:
-          message.action = Action.internalBinaryRead(
-            reader,
-            reader.uint32(),
-            options,
-            message.action,
-          );
+        case /* bool start */ 5:
+          message.action = {
+            oneofKind: 'start',
+            start: reader.bool(),
+          };
           break;
-        case /* repeated Bot bots */ 6:
+        case /* MoveAction move */ 6:
+          message.action = {
+            oneofKind: 'move',
+            move: MoveAction.internalBinaryRead(
+              reader,
+              reader.uint32(),
+              options,
+              (message.action as any).move,
+            ),
+          };
+          break;
+        case /* PlaceAction place */ 7:
+          message.action = {
+            oneofKind: 'place',
+            place: PlaceAction.internalBinaryRead(
+              reader,
+              reader.uint32(),
+              options,
+              (message.action as any).place,
+            ),
+          };
+          break;
+        case /* bool stuck */ 8:
+          message.action = {
+            oneofKind: 'stuck',
+            stuck: reader.bool(),
+          };
+          break;
+        case /* repeated Bot bots */ 9:
           message.bots.push(Bot.internalBinaryRead(reader, reader.uint32(), options));
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -587,21 +618,34 @@ class Tick$Type extends MessageType<Tick> {
       for (let i = 0; i < message.ownedWalls.length; i++) writer.int32(message.ownedWalls[i]);
       writer.join();
     }
-    /* Action action = 5; */
-    if (message.action)
-      Action.internalBinaryWrite(
-        message.action,
-        writer.tag(5, WireType.LengthDelimited).fork(),
-        options,
-      ).join();
-    /* repeated Bot bots = 6; */
-    for (let i = 0; i < message.bots.length; i++)
-      Bot.internalBinaryWrite(
-        message.bots[i],
+    /* bool start = 5; */
+    if (message.action.oneofKind === 'start')
+      writer.tag(5, WireType.Varint).bool(message.action.start);
+    /* MoveAction move = 6; */
+    if (message.action.oneofKind === 'move')
+      MoveAction.internalBinaryWrite(
+        message.action.move,
         writer.tag(6, WireType.LengthDelimited).fork(),
         options,
       ).join();
-    const u = options.writeUnknownFields;
+    /* PlaceAction place = 7; */
+    if (message.action.oneofKind === 'place')
+      PlaceAction.internalBinaryWrite(
+        message.action.place,
+        writer.tag(7, WireType.LengthDelimited).fork(),
+        options,
+      ).join();
+    /* bool stuck = 8; */
+    if (message.action.oneofKind === 'stuck')
+      writer.tag(8, WireType.Varint).bool(message.action.stuck);
+    /* repeated Bot bots = 9; */
+    for (let i = 0; i < message.bots.length; i++)
+      Bot.internalBinaryWrite(
+        message.bots[i],
+        writer.tag(9, WireType.LengthDelimited).fork(),
+        options,
+      ).join();
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -630,10 +674,10 @@ class PawnPos$Type extends MessageType<PawnPos> {
     options: BinaryReadOptions,
     target?: PawnPos,
   ): PawnPos {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* int32 x */ 1:
           message.x = reader.int32();
@@ -642,12 +686,12 @@ class PawnPos$Type extends MessageType<PawnPos> {
           message.y = reader.int32();
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -669,7 +713,7 @@ class PawnPos$Type extends MessageType<PawnPos> {
     if (message.x !== 0) writer.tag(1, WireType.Varint).int32(message.x);
     /* int32 y = 2; */
     if (message.y !== 0) writer.tag(2, WireType.Varint).int32(message.y);
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -700,10 +744,10 @@ class Wall$Type extends MessageType<Wall> {
     options: BinaryReadOptions,
     target?: Wall,
   ): Wall {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* int32 x */ 1:
           message.x = reader.int32();
@@ -718,12 +762,12 @@ class Wall$Type extends MessageType<Wall> {
           message.who = reader.int32();
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -749,7 +793,7 @@ class Wall$Type extends MessageType<Wall> {
     if (message.isVertical !== 0) writer.tag(3, WireType.Varint).int32(message.isVertical);
     /* int32 who = 4; */
     if (message.who !== 0) writer.tag(4, WireType.Varint).int32(message.who);
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -758,120 +802,6 @@ class Wall$Type extends MessageType<Wall> {
  * @generated MessageType for protobuf message Wall
  */
 export const Wall = new Wall$Type();
-// @generated message type with reflection information, may provide speed optimized methods
-class Action$Type extends MessageType<Action> {
-  constructor() {
-    super('Action', [
-      { no: 1, name: 'start', kind: 'scalar', oneof: 'action', T: 8 /*ScalarType.BOOL*/ },
-      { no: 2, name: 'move', kind: 'message', oneof: 'action', T: () => MoveAction },
-      { no: 3, name: 'place', kind: 'message', oneof: 'action', T: () => PlaceAction },
-      { no: 4, name: 'stuck', kind: 'scalar', oneof: 'action', T: 8 /*ScalarType.BOOL*/ },
-    ]);
-  }
-  create(value?: PartialMessage<Action>): Action {
-    const message = { action: { oneofKind: undefined } };
-    globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
-    if (value !== undefined) reflectionMergePartial<Action>(this, message, value);
-    return message;
-  }
-  internalBinaryRead(
-    reader: IBinaryReader,
-    length: number,
-    options: BinaryReadOptions,
-    target?: Action,
-  ): Action {
-    const message = target ?? this.create(),
-      end = reader.pos + length;
-    while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
-      switch (fieldNo) {
-        case /* bool start */ 1:
-          message.action = {
-            oneofKind: 'start',
-            start: reader.bool(),
-          };
-          break;
-        case /* MoveAction move */ 2:
-          message.action = {
-            oneofKind: 'move',
-            move: MoveAction.internalBinaryRead(
-              reader,
-              reader.uint32(),
-              options,
-              (message.action as any).move,
-            ),
-          };
-          break;
-        case /* PlaceAction place */ 3:
-          message.action = {
-            oneofKind: 'place',
-            place: PlaceAction.internalBinaryRead(
-              reader,
-              reader.uint32(),
-              options,
-              (message.action as any).place,
-            ),
-          };
-          break;
-        case /* bool stuck */ 4:
-          message.action = {
-            oneofKind: 'stuck',
-            stuck: reader.bool(),
-          };
-          break;
-        default:
-          const u = options.readUnknownField;
-          if (u === 'throw')
-            throw new globalThis.Error(
-              `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
-            );
-          const d = reader.skip(wireType);
-          if (u !== false)
-            (u === true ? UnknownFieldHandler.onRead : u)(
-              this.typeName,
-              message,
-              fieldNo,
-              wireType,
-              d,
-            );
-      }
-    }
-    return message;
-  }
-  internalBinaryWrite(
-    message: Action,
-    writer: IBinaryWriter,
-    options: BinaryWriteOptions,
-  ): IBinaryWriter {
-    /* bool start = 1; */
-    if (message.action.oneofKind === 'start')
-      writer.tag(1, WireType.Varint).bool(message.action.start);
-    /* MoveAction move = 2; */
-    if (message.action.oneofKind === 'move')
-      MoveAction.internalBinaryWrite(
-        message.action.move,
-        writer.tag(2, WireType.LengthDelimited).fork(),
-        options,
-      ).join();
-    /* PlaceAction place = 3; */
-    if (message.action.oneofKind === 'place')
-      PlaceAction.internalBinaryWrite(
-        message.action.place,
-        writer.tag(3, WireType.LengthDelimited).fork(),
-        options,
-      ).join();
-    /* bool stuck = 4; */
-    if (message.action.oneofKind === 'stuck')
-      writer.tag(4, WireType.Varint).bool(message.action.stuck);
-    const u = options.writeUnknownFields;
-    if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
-    return writer;
-  }
-}
-/**
- * @generated MessageType for protobuf message Action
- */
-export const Action = new Action$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class MoveAction$Type extends MessageType<MoveAction> {
   constructor() {
@@ -892,10 +822,10 @@ class MoveAction$Type extends MessageType<MoveAction> {
     options: BinaryReadOptions,
     target?: MoveAction,
   ): MoveAction {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* int32 x */ 1:
           message.x = reader.int32();
@@ -904,12 +834,12 @@ class MoveAction$Type extends MessageType<MoveAction> {
           message.y = reader.int32();
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -931,7 +861,7 @@ class MoveAction$Type extends MessageType<MoveAction> {
     if (message.x !== 0) writer.tag(1, WireType.Varint).int32(message.x);
     /* int32 y = 2; */
     if (message.y !== 0) writer.tag(2, WireType.Varint).int32(message.y);
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -961,10 +891,10 @@ class PlaceAction$Type extends MessageType<PlaceAction> {
     options: BinaryReadOptions,
     target?: PlaceAction,
   ): PlaceAction {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* int32 x */ 1:
           message.x = reader.int32();
@@ -976,12 +906,12 @@ class PlaceAction$Type extends MessageType<PlaceAction> {
           message.isVertical = reader.int32();
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -1005,7 +935,7 @@ class PlaceAction$Type extends MessageType<PlaceAction> {
     if (message.y !== 0) writer.tag(2, WireType.Varint).int32(message.y);
     /* int32 is_vertical = 3; */
     if (message.isVertical !== 0) writer.tag(3, WireType.Varint).int32(message.isVertical);
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -1037,6 +967,7 @@ class Bot$Type extends MessageType<Bot> {
       { no: 5, name: 'error', kind: 'scalar', opt: true, T: 9 /*ScalarType.STRING*/ },
       { no: 6, name: 'bot_log', kind: 'scalar', opt: true, T: 9 /*ScalarType.STRING*/ },
       { no: 7, name: 'distance', kind: 'scalar', T: 5 /*ScalarType.INT32*/ },
+      { no: 8, name: 'offline', kind: 'scalar', opt: true, T: 8 /*ScalarType.BOOL*/ },
     ]);
   }
   create(value?: PartialMessage<Bot>): Bot {
@@ -1051,10 +982,10 @@ class Bot$Type extends MessageType<Bot> {
     options: BinaryReadOptions,
     target?: Bot,
   ): Bot {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* string id */ 1:
           message.id = reader.string();
@@ -1077,13 +1008,16 @@ class Bot$Type extends MessageType<Bot> {
         case /* int32 distance */ 7:
           message.distance = reader.int32();
           break;
+        case /* optional bool offline */ 8:
+          message.offline = reader.bool();
+          break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -1126,7 +1060,9 @@ class Bot$Type extends MessageType<Bot> {
       writer.tag(6, WireType.LengthDelimited).string(message.botLog);
     /* int32 distance = 7; */
     if (message.distance !== 0) writer.tag(7, WireType.Varint).int32(message.distance);
-    const u = options.writeUnknownFields;
+    /* optional bool offline = 8; */
+    if (message.offline !== undefined) writer.tag(8, WireType.Varint).bool(message.offline);
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
@@ -1161,10 +1097,10 @@ class BotMessage$Type extends MessageType<BotMessage> {
     options: BinaryReadOptions,
     target?: BotMessage,
   ): BotMessage {
-    const message = target ?? this.create(),
+    let message = target ?? this.create(),
       end = reader.pos + length;
     while (reader.pos < end) {
-      const [fieldNo, wireType] = reader.tag();
+      let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* string message */ 1:
           message.message = reader.string();
@@ -1173,12 +1109,12 @@ class BotMessage$Type extends MessageType<BotMessage> {
           message.timestamp = reader.uint64().toNumber();
           break;
         default:
-          const u = options.readUnknownField;
+          let u = options.readUnknownField;
           if (u === 'throw')
             throw new globalThis.Error(
               `Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`,
             );
-          const d = reader.skip(wireType);
+          let d = reader.skip(wireType);
           if (u !== false)
             (u === true ? UnknownFieldHandler.onRead : u)(
               this.typeName,
@@ -1200,7 +1136,7 @@ class BotMessage$Type extends MessageType<BotMessage> {
     if (message.message !== '') writer.tag(1, WireType.LengthDelimited).string(message.message);
     /* uint64 timestamp = 2; */
     if (message.timestamp !== 0) writer.tag(2, WireType.Varint).uint64(message.timestamp);
-    const u = options.writeUnknownFields;
+    let u = options.writeUnknownFields;
     if (u !== false) (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
     return writer;
   }
