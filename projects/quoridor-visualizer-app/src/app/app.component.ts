@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import * as base64 from 'base64-js';
 
 @Component({
   selector: 'app-root',
@@ -6,13 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  isBinary = new FormControl(true);
   public matchLog: string | ArrayBuffer = '';
 
   onFileSelected(event: Event) {
     const file: File = (event.target as unknown as { files: File[] }).files[0];
     if (file) {
       const reader = new FileReader();
-      if (file.name.endsWith('.bin')) {
+      if (this.isBinary.value) {
         reader.readAsArrayBuffer(file);
       } else {
         reader.readAsText(file, 'utf8');
@@ -27,5 +30,11 @@ export class AppComponent {
         console.error(error);
       };
     }
+  }
+
+  setBase64() {
+    this.matchLog = base64.toByteArray(
+      (document.getElementById('base64Input') as unknown as { value: string }).value,
+    );
   }
 }

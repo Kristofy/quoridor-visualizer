@@ -1,5 +1,12 @@
-<ng-container *ngIf="!matchLog">
-  <label for="matchLog">match log file (.bin is binary)</label><br />
+<ng-form *ngIf="!matchLog">
+  <label for="isBinary">isBinary</label><br />
+  <input type="checkbox" id="isBinary" [formControl]="isBinary" />
+  <br>
+  <label for="matchLog">match log file</label><br />
   <input type="file" id="matchLog" (change)="onFileSelected($event)" />
-</ng-container>
+  <br>
+  <label for="base64Input">base64</label><br />
+  <input type="text" id="base64Input" />
+  <button (click)="setBase64()">set</button>
+</ng-form>
 <lib-quoridor-visualizer [matchLog]="matchLog"></lib-quoridor-visualizer>
